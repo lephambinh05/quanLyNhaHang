@@ -1,0 +1,26 @@
+@page
+@model AdminLoginModel
+@{
+    ViewData["Title"] = "Đăng nhập quản trị";
+}
+
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="mb-4 text-center">Đăng nhập quản trị</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="Input.Email" class="form-label">Email</label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Input.Password" class="form-label">Mật khẩu</label>
+            <input asp-for="Input.Password" type="password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-danger w-100">Đăng nhập</button>
+        @if (Model.ErrorMessage != null)
+        {
+            <div class="alert alert-danger mt-3">@Model.ErrorMessage</div>
+        }
+    </form>
+</div> 

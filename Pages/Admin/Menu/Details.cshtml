@@ -1,0 +1,34 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Chi tiết món ăn";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Chi tiết món ăn</div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Mã món</dt>
+                <dd class="col-sm-8">GA01</dd>
+                <dt class="col-sm-4">Tên món</dt>
+                <dd class="col-sm-8">Gà rán giòn cay</dd>
+                <dt class="col-sm-4">Danh mục</dt>
+                <dd class="col-sm-8">Gà rán</dd>
+                <dt class="col-sm-4">Chi nhánh</dt>
+                <dd class="col-sm-8">KFC Nguyễn Trãi</dd>
+                <dt class="col-sm-4">Giá</dt>
+                <dd class="col-sm-8">45,000</dd>
+                <dt class="col-sm-4">Mức cay</dt>
+                <dd class="col-sm-8">3/7</dd>
+                <dt class="col-sm-4">Hình ảnh</dt>
+                <dd class="col-sm-8"><img src="/img/ga-ran.jpg" alt="Gà rán" style="max-width:120px;"></dd>
+                <dt class="col-sm-4">Có sẵn</dt>
+                <dd class="col-sm-8"><span class="badge bg-success">Có</span></dd>
+            </dl>
+            <div class="text-end mt-4">
+                <a asp-page="Edit" asp-route-id="GA01" class="btn btn-success me-2">Sửa</a>
+                <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</div> 

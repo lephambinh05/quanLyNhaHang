@@ -1,0 +1,38 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Chi tiết khuyến mãi";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Chi tiết khuyến mãi</div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Mã khuyến mãi</dt>
+                <dd class="col-sm-8">KM01</dd>
+                <dt class="col-sm-4">Mã giảm giá</dt>
+                <dd class="col-sm-8">KFC50</dd>
+                <dt class="col-sm-4">Mô tả</dt>
+                <dd class="col-sm-8">Giảm 50% cho đơn đầu tiên</dd>
+                <dt class="col-sm-4">Tỷ lệ giảm</dt>
+                <dd class="col-sm-8">50%</dd>
+                <dt class="col-sm-4">Thời gian</dt>
+                <dd class="col-sm-8">01/06 - 30/06</dd>
+                <dt class="col-sm-4">Chi nhánh áp dụng</dt>
+                <dd class="col-sm-8">Toàn hệ thống</dd>
+                <dt class="col-sm-4">Toàn hệ thống</dt>
+                <dd class="col-sm-8"><span class="badge bg-success">Có</span></dd>
+                <dt class="col-sm-4">Hình ảnh banner</dt>
+                <dd class="col-sm-8"><img src="/img/banner.jpg" alt="Banner" style="max-width:120px;"></dd>
+                <dt class="col-sm-4">Tiêu đề banner</dt>
+                <dd class="col-sm-8">Khai trương -50%</dd>
+                <dt class="col-sm-4">Nội dung banner</dt>
+                <dd class="col-sm-8">Áp dụng cho đơn đầu tiên trong tháng 6</dd>
+            </dl>
+            <div class="text-end mt-4">
+                <a asp-page="Edit" asp-route-id="KM01" class="btn btn-success me-2">Sửa</a>
+                <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</div> 

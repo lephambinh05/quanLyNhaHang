@@ -1,0 +1,74 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "POS - Đơn hàng";
+}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0">Đơn hàng tại quầy</h3>
+    <a class="btn btn-primary" asp-page="Create"><i class="fa fa-plus me-2"></i>Tạo đơn mới</a>
+</div>
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+        <form class="row g-2 mb-3">
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>-- Trạng thái --</option>
+                    <option>Chưa xử lý</option>
+                    <option>Đang chế biến</option>
+                    <option>Đang giao</option>
+                    <option>Hoàn thành</option>
+                    <option>Hủy</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Tìm kiếm mã đơn, tên khách...">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-primary w-100"><i class="fa fa-search"></i> Tìm</button>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Chi nhánh</th>
+                        <th>Ngày đặt</th>
+                        <th>Trạng thái</th>
+                        <th>Tổng tiền</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DH001</td>
+                        <td>Nguyễn Văn C</td>
+                        <td>KFC Nguyễn Trãi</td>
+                        <td>10/06/2024</td>
+                        <td><span class="badge bg-warning text-dark">Đang chế biến</span></td>
+                        <td>150,000</td>
+                        <td>
+                            <a class="btn btn-sm btn-info me-1" asp-page="Details" asp-route-id="DH001"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-sm btn-success me-1" asp-page="Pay" asp-route-id="DH001"><i class="fa fa-money-bill"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DH002</td>
+                        <td>Trần Thị D</td>
+                        <td>KFC Lê Lợi</td>
+                        <td>10/06/2024</td>
+                        <td><span class="badge bg-success">Hoàn thành</span></td>
+                        <td>95,000</td>
+                        <td>
+                            <a class="btn btn-sm btn-info me-1" asp-page="Details" asp-route-id="DH002"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 

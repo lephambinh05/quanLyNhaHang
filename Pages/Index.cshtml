@@ -1,0 +1,134 @@
+﻿@page
+@model NhaHang.Pages.IndexModel
+@{
+    ViewData["Title"] = "NhaHangChain - Đặt hàng trực tuyến";
+}
+
+<div class="container-fluid">
+    <!-- Hero Section -->
+    <div class="row bg-danger text-white py-5 mb-4">
+        <div class="col-md-8 mx-auto text-center">
+            <h1 class="display-4 fw-bold mb-3">
+                <i class="fa-solid fa-drumstick-bite me-3"></i>
+                NhaHangChain
+            </h1>
+            <p class="lead mb-4">Đặt món ngon, giao hàng nhanh - Hệ thống chuỗi nhà hàng hàng đầu</p>
+            <a href="#menu" class="btn btn-light btn-lg px-4">Xem thực đơn ngay</a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mb-5">
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="fa-solid fa-utensils fa-3x text-danger mb-3"></i>
+                    <h5 class="card-title">Thực đơn đa dạng</h5>
+                    <p class="card-text">Hơn 100 món ăn ngon từ các món truyền thống đến hiện đại</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="fa-solid fa-clock fa-3x text-warning mb-3"></i>
+                    <h5 class="card-title">Giao hàng nhanh</h5>
+                    <p class="card-text">Giao hàng trong 30 phút với đơn hàng trong bán kính 5km</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="fa-solid fa-gift fa-3x text-success mb-3"></i>
+                    <h5 class="card-title">Khuyến mãi hấp dẫn</h5>
+                    <p class="card-text">Giảm giá lên đến 50% cho khách hàng thân thiết</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <div id="menu" class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Thực đơn nổi bật</h2>
+            <div class="row">
+                @if (Model.FeaturedDishes.Any())
+                {
+                    @foreach (var dish in Model.FeaturedDishes.Take(6))
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                @if (!string.IsNullOrEmpty(dish.HinhAnh))
+                                {
+                                    <img src="/img/@dish.HinhAnh" class="card-img-top" alt="@dish.TenMonAn" style="height: 200px; object-fit: cover;">
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title">@dish.TenMonAn</h5>
+                                    <p class="card-text text-muted">@dish.MoTa</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="h5 text-danger mb-0">@dish.Gia.ToString("N0") VNĐ</span>
+                                        <a href="/Shop/Create" class="btn btn-outline-danger btn-sm">Đặt ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Đang tải thực đơn...</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotions Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Khuyến mãi đang chạy</h2>
+            <div class="row">
+                @if (Model.ActivePromotions.Any())
+                {
+                    @foreach (var promo in Model.ActivePromotions.Take(3))
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 shadow-sm bg-gradient text-white" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">@promo.MaGiamGia</h5>
+                                    <p class="card-text">@promo.MoTa</p>
+                                    <div class="mb-3">
+                                        <span class="badge bg-light text-dark">Giảm @promo.TyLeGiam%</span>
+                                    </div>
+                                    <a href="/Shop/Create" class="btn btn-light">Áp dụng ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Hiện tại chưa có khuyến mãi nào.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="row bg-light py-5 rounded">
+        <div class="col-md-8 mx-auto text-center">
+            <h3 class="mb-3">Sẵn sàng đặt hàng?</h3>
+            <p class="lead mb-4">Khám phá thực đơn đầy đủ và đặt món ngay bây giờ!</p>
+            <a href="/Shop/Create" class="btn btn-danger btn-lg px-4 me-3">
+                <i class="fa-solid fa-shopping-cart me-2"></i>Đặt hàng ngay
+            </a>
+            <a href="/Menu" class="btn btn-outline-danger btn-lg px-4">
+                <i class="fa-solid fa-burger me-2"></i>Xem thực đơn
+            </a>
+        </div>
+    </div>
+</div>

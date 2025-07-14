@@ -1,0 +1,50 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Sửa đơn hàng";
+}
+<div class="col-lg-8 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Sửa đơn hàng</div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Tên khách hàng</label>
+                        <input type="text" class="form-control" value="Nguyễn Văn C" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" value="0901234567" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Chi nhánh</label>
+                    <select class="form-select" required>
+                        <option selected>KFC Nguyễn Trãi</option>
+                        <option>KFC Lê Lợi</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ giao hàng</label>
+                    <input type="text" class="form-control" value="123 Nguyễn Trãi, Q.1" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Chọn món</label>
+                    <select class="form-select" multiple required>
+                        <option selected>Gà rán giòn cay</option>
+                        <option>Burger gà</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ghi chú</label>
+                    <input type="text" class="form-control" value="Không hành" />
+                </div>
+                <div class="text-end">
+                    <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,33 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+<div class="col-lg-8 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Chi tiết đơn hàng</div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Mã đơn</dt>
+                <dd class="col-sm-8">DH001</dd>
+                <dt class="col-sm-4">Khách hàng</dt>
+                <dd class="col-sm-8">Nguyễn Văn C</dd>
+                <dt class="col-sm-4">Chi nhánh</dt>
+                <dd class="col-sm-8">KFC Nguyễn Trãi</dd>
+                <dt class="col-sm-4">Ngày đặt</dt>
+                <dd class="col-sm-8">10/06/2024</dd>
+                <dt class="col-sm-4">Trạng thái</dt>
+                <dd class="col-sm-8"><span class="badge bg-success">Hoàn thành</span></dd>
+                <dt class="col-sm-4">Tổng tiền</dt>
+                <dd class="col-sm-8">129,000</dd>
+                <dt class="col-sm-4">Danh sách món</dt>
+                <dd class="col-sm-8">Gà rán giòn cay (2), Burger gà (1)</dd>
+                <dt class="col-sm-4">Ghi chú</dt>
+                <dd class="col-sm-8">Không hành</dd>
+            </dl>
+            <div class="text-end mt-4">
+                <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</div> 

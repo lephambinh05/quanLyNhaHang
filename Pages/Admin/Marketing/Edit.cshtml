@@ -1,0 +1,69 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Sửa khuyến mãi";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Sửa thông tin khuyến mãi</div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Mã khuyến mãi</label>
+                    <input type="text" class="form-control" value="KM01" readonly />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mã giảm giá</label>
+                    <input type="text" class="form-control" value="KFC50" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mô tả</label>
+                    <input type="text" class="form-control" value="Giảm 50% cho đơn đầu tiên" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tỷ lệ giảm (%)</label>
+                    <input type="number" class="form-control" value="50" min="0" max="100" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày bắt đầu</label>
+                    <input type="date" class="form-control" value="2024-06-01" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày kết thúc</label>
+                    <input type="date" class="form-control" value="2024-06-30" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Toàn hệ thống</label>
+                    <select class="form-select">
+                        <option selected>Có</option>
+                        <option>Không</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Chi nhánh áp dụng</label>
+                    <select class="form-select">
+                        <option selected>Toàn hệ thống</option>
+                        <option>KFC Nguyễn Trãi</option>
+                        <option>KFC Lê Lợi</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hình ảnh banner</label>
+                    <input type="text" class="form-control" value="/img/banner.jpg" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tiêu đề banner</label>
+                    <input type="text" class="form-control" value="Khai trương -50%" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nội dung banner</label>
+                    <input type="text" class="form-control" value="Áp dụng cho đơn đầu tiên trong tháng 6" />
+                </div>
+                <div class="text-end">
+                    <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

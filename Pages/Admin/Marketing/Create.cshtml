@@ -1,0 +1,69 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Thêm khuyến mãi";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Thêm khuyến mãi mới</div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Mã khuyến mãi</label>
+                    <input type="text" class="form-control" name="Promotion.MaKhuyenMai" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mã giảm giá</label>
+                    <input type="text" class="form-control" name="Promotion.MaGiamGia" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mô tả</label>
+                    <input type="text" class="form-control" name="Promotion.MoTa" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tỷ lệ giảm (%)</label>
+                    <input type="number" class="form-control" name="Promotion.TyLeGiam" min="0" max="100" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày bắt đầu</label>
+                    <input type="date" class="form-control" name="Promotion.NgayBatDau" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày kết thúc</label>
+                    <input type="date" class="form-control" name="Promotion.NgayKetThuc" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Toàn hệ thống</label>
+                    <select class="form-select" name="Promotion.ToanHeThong">
+                        <option value="true">Có</option>
+                        <option value="false">Không</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Chi nhánh áp dụng</label>
+                    <select class="form-select" name="Promotion.MaChiNhanh">
+                        <option value="">Toàn hệ thống</option>
+                        <option value="CN01">KFC Nguyễn Trãi</option>
+                        <option value="CN02">KFC Lê Lợi</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hình ảnh banner</label>
+                    <input type="file" class="form-control" name="BannerFile" accept="image/*" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tiêu đề banner</label>
+                    <input type="text" class="form-control" name="Promotion.TieuDeBanner" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nội dung banner</label>
+                    <input type="text" class="form-control" name="Promotion.NoiDungBanner" />
+                </div>
+                <div class="text-end">
+                    <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

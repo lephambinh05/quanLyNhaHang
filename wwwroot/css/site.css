@@ -1,0 +1,90 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Style bổ sung cho giao diện nhà hàng chuỗi */
+.btn-primary, .btn-danger {
+    border-radius: 2rem;
+    font-weight: 600;
+}
+.table thead {
+    background: #d32f2f;
+    color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fff3f3;
+}
+.toast {
+    background: #d32f2f;
+    color: #fff;
+}
+.navbar-brand, .sidebar .logo {
+    letter-spacing: 1.5px;
+}
+
+/* Sidebar & Layout */
+.sidebar { box-shadow: 2px 0 8px rgba(0,0,0,0.04); }
+.sidebar .nav-link { font-size: 1.05rem; padding: 0.75rem 1.25rem; border-radius: 0.5rem; transition: background 0.2s; }
+.sidebar .nav-link.active { font-weight: bold; }
+.sidebar .nav-link i { width: 22px; text-align: center; }
+.sidebar .text-uppercase { color: #ffc107; letter-spacing: 1px; }
+.logo { color: #fff; text-shadow: 1px 1px 4px #b71c1c; }
+
+/* Navbar */
+.navbar { border-radius: 0.5rem; }
+.navbar .navbar-brand { color: #d32f2f; font-weight: bold; }
+.dropdown-menu { min-width: 180px; }
+
+/* Main Content */
+.main-content { background: #fff; border-radius: 0.75rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+
+/* Table */
+table.table { border-radius: 0.5rem; overflow: hidden; }
+table.table th { background: #d32f2f; color: #fff; }
+table.table td { vertical-align: middle; }
+
+/* Button */
+.btn-primary, .btn-danger { background: #d32f2f; border: none; }
+.btn-primary:hover, .btn-danger:hover { background: #b71c1c; }
+.btn-success { background: #388e3c; border: none; }
+.btn-success:hover { background: #256029; }
+
+/* Form */
+.form-control:focus { border-color: #d32f2f; box-shadow: 0 0 0 0.2rem rgba(211,47,47,.15); }
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .sidebar { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .main-content { border-radius: 0.5rem; }
+}
+
+/* Footer */
+footer { color: #b71c1c; }

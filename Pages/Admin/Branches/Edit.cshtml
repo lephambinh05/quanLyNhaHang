@@ -1,0 +1,42 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Sửa chi nhánh";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Sửa thông tin chi nhánh</div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Mã chi nhánh</label>
+                    <input type="text" class="form-control" value="CN01" readonly />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên chi nhánh</label>
+                    <input type="text" class="form-control" value="KFC Nguyễn Trãi" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" value="123 Nguyễn Trãi, Q.1" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" value="0901234567" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" value="kfc.nguyentrai@email.com" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên quản lý</label>
+                    <input type="text" class="form-control" value="Nguyễn Văn A" />
+                </div>
+                <div class="text-end">
+                    <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

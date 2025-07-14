@@ -1,0 +1,72 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Quản lý khuyến mãi";
+}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0">Danh sách khuyến mãi</h3>
+    <a class="btn btn-primary" asp-page="Create"><i class="fa fa-plus me-2"></i>Thêm khuyến mãi</a>
+</div>
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+        <form class="row g-2 mb-3">
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>-- Chi nhánh --</option>
+                    <option>KFC Nguyễn Trãi</option>
+                    <option>KFC Lê Lợi</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Tìm kiếm mã, mô tả...">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-primary w-100"><i class="fa fa-search"></i> Tìm</button>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Mã KM</th>
+                        <th>Mã giảm giá</th>
+                        <th>Mô tả</th>
+                        <th>Tỷ lệ giảm</th>
+                        <th>Thời gian</th>
+                        <th>Chi nhánh</th>
+                        <th>Toàn hệ thống</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>KM01</td>
+                        <td>KFC50</td>
+                        <td>Giảm 50% cho đơn đầu tiên</td>
+                        <td>50%</td>
+                        <td>01/06 - 30/06</td>
+                        <td>Toàn hệ thống</td>
+                        <td><span class="badge bg-success">Có</span></td>
+                        <td>
+                            <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="KM01"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="KM01"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>KM02</td>
+                        <td>KFC20</td>
+                        <td>Giảm 20% cho khách thân thiết</td>
+                        <td>20%</td>
+                        <td>01/06 - 15/06</td>
+                        <td>KFC Nguyễn Trãi</td>
+                        <td><span class="badge bg-danger">Không</span></td>
+                        <td>
+                            <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="KM02"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="KM02"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 

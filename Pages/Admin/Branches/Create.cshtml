@@ -1,0 +1,46 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Thêm chi nhánh";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Thêm chi nhánh mới</div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Mã chi nhánh</label>
+                    <input type="text" class="form-control" name="Branch.MaChiNhanh" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên chi nhánh</label>
+                    <input type="text" class="form-control" name="Branch.TenChiNhanh" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" name="Branch.DiaChi" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" name="Branch.SoDienThoai" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="Branch.Email" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên quản lý</label>
+                    <input type="text" class="form-control" name="Branch.TenQuanLy" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ảnh đại diện</label>
+                    <input type="file" class="form-control" name="AvatarFile" accept="image/*" />
+                </div>
+                <div class="text-end">
+                    <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,184 @@
+@page
+@model DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Chi nhánh</h4>
+                        <h2 class="mb-0">@Model.TotalBranches</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fa-solid fa-store fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Món ăn</h4>
+                        <h2 class="mb-0">@Model.TotalDishes</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fa-solid fa-burger fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Đơn hàng</h4>
+                        <h2 class="mb-0">@Model.TotalOrders</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fa-solid fa-shopping-cart fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">Khách hàng</h4>
+                        <h2 class="mb-0">@Model.TotalCustomers</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fa-solid fa-users fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Đơn hàng gần đây</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentOrders.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Khách hàng</th>
+                                    <th>Chi nhánh</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày đặt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model.RecentOrders)
+                                {
+                                    <tr>
+                                        <td>@order.MaDonHang</td>
+                                        <td>@order.TenKhachHang</td>
+                                        <td>@order.ChiNhanh?.TenChiNhanh</td>
+                                        <td>
+                                            <span class="badge bg-@(order.TrangThai switch {
+                                                "Chưa xử lý" => "secondary",
+                                                "Đang chế biến" => "warning",
+                                                "Đang giao" => "info",
+                                                "Hoàn thành" => "success",
+                                                "Hủy" => "danger",
+                                                _ => "secondary"
+                                            })">@order.TrangThai</span>
+                                        </td>
+                                        <td>@order.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">Chưa có đơn hàng nào.</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Thống kê nhanh</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <h6>Doanh thu hôm nay</h6>
+                    <h4 class="text-success">@Model.TodayRevenue.ToString("N0") VNĐ</h4>
+                </div>
+                <div class="mb-3">
+                    <h6>Đơn hàng hôm nay</h6>
+                    <h4 class="text-primary">@Model.TodayOrders</h4>
+                </div>
+                <div class="mb-3">
+                    <h6>Khuyến mãi đang chạy</h6>
+                    <h4 class="text-warning">@Model.ActivePromotions</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Doanh thu 7 ngày gần nhất
+        var ctx = document.getElementById('revenueChart').getContext('2d');
+        var revenueChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+                datasets: [{
+                    label: 'Doanh thu (triệu VNĐ)',
+                    data: [12, 15, 10, 18, 20, 22, 25],
+                    borderColor: '#d32f2f',
+                    backgroundColor: 'rgba(211,47,47,0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+        // Top món bán chạy
+        var ctx2 = document.getElementById('topDishesChart').getContext('2d');
+        var topDishesChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Gà rán', 'Burger', 'Khoai tây', 'Cơm gà', 'Pepsi'],
+                datasets: [{
+                    label: 'Số lượng',
+                    data: [120, 95, 80, 60, 55],
+                    backgroundColor: ['#d32f2f', '#ffc107', '#388e3c', '#1976d2', '#b71c1c']
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+} 

@@ -1,0 +1,79 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Quản lý thực đơn";
+}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0">Danh sách món ăn</h3>
+    <a class="btn btn-primary" asp-page="Create"><i class="fa fa-plus me-2"></i>Thêm món</a>
+</div>
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+        <form class="row g-2 mb-3">
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>-- Danh mục --</option>
+                    <option>Gà rán</option>
+                    <option>Burger</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>-- Chi nhánh --</option>
+                    <option>KFC Nguyễn Trãi</option>
+                    <option>KFC Lê Lợi</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Tìm kiếm tên món...">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-primary w-100"><i class="fa fa-search"></i> Tìm</button>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Mã món</th>
+                        <th>Tên món</th>
+                        <th>Danh mục</th>
+                        <th>Chi nhánh</th>
+                        <th>Giá</th>
+                        <th>Mức cay</th>
+                        <th>Có sẵn</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GA01</td>
+                        <td>Gà rán giòn cay</td>
+                        <td>Gà rán</td>
+                        <td>KFC Nguyễn Trãi</td>
+                        <td>45,000</td>
+                        <td>3/7</td>
+                        <td><span class="badge bg-success">Có</span></td>
+                        <td>
+                            <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="GA01"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="GA01"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BG01</td>
+                        <td>Burger gà</td>
+                        <td>Burger</td>
+                        <td>KFC Lê Lợi</td>
+                        <td>39,000</td>
+                        <td>1/7</td>
+                        <td><span class="badge bg-danger">Hết</span></td>
+                        <td>
+                            <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="BG01"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="BG01"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 

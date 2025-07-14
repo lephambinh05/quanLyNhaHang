@@ -1,0 +1,32 @@
+@page
+@model dynamic
+@{
+    ViewData["Title"] = "Chi tiết chi nhánh";
+}
+<div class="col-lg-7 mx-auto">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-white fw-bold">Chi tiết chi nhánh</div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Mã chi nhánh</dt>
+                <dd class="col-sm-8">CN01</dd>
+                <dt class="col-sm-4">Tên chi nhánh</dt>
+                <dd class="col-sm-8">KFC Nguyễn Trãi</dd>
+                <dt class="col-sm-4">Địa chỉ</dt>
+                <dd class="col-sm-8">123 Nguyễn Trãi, Q.1</dd>
+                <dt class="col-sm-4">Số điện thoại</dt>
+                <dd class="col-sm-8">0901234567</dd>
+                <dt class="col-sm-4">Email</dt>
+                <dd class="col-sm-8">kfc.nguyentrai@email.com</dd>
+                <dt class="col-sm-4">Tên quản lý</dt>
+                <dd class="col-sm-8">Nguyễn Văn A</dd>
+                <dt class="col-sm-4">Ngày tạo</dt>
+                <dd class="col-sm-8">01/01/2024</dd>
+            </dl>
+            <div class="text-end mt-4">
+                <a asp-page="Edit" asp-route-id="CN01" class="btn btn-success me-2">Sửa</a>
+                <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+    </div>
+</div> 
