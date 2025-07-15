@@ -1,0 +1,13 @@
+@page
+@model NhaHang.Pages.DanhMucPages.DetailsModel
+@{
+    ViewData["Title"] = "Chi tiết danh mục";
+}
+<h2>Chi tiết danh mục</h2>
+<dl class="row">
+    <dt class="col-sm-3">Tên danh mục</dt>
+    <dd class="col-sm-9">@Model.Category?.TenDanhMuc</dd>
+    <dt class="col-sm-3">Mô tả</dt>
+    <dd class="col-sm-9">@Model.Category?.MoTa</dd>
+</dl>
+<a asp-page="Index" class="btn btn-secondary">Quay lại</a> 

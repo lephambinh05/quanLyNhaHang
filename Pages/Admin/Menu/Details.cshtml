@@ -1,5 +1,5 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Menu.DetailsModel
 @{
     ViewData["Title"] = "Chi tiết món ăn";
 }
@@ -9,24 +9,31 @@
         <div class="card-body">
             <dl class="row mb-0">
                 <dt class="col-sm-4">Mã món</dt>
-                <dd class="col-sm-8">GA01</dd>
+                <dd class="col-sm-8">@Model.Dish?.MaMonAn</dd>
                 <dt class="col-sm-4">Tên món</dt>
-                <dd class="col-sm-8">Gà rán giòn cay</dd>
+                <dd class="col-sm-8">@Model.Dish?.TenMonAn</dd>
                 <dt class="col-sm-4">Danh mục</dt>
-                <dd class="col-sm-8">Gà rán</dd>
+                <dd class="col-sm-8">@Model.Dish?.MaDanhMuc</dd>
                 <dt class="col-sm-4">Chi nhánh</dt>
-                <dd class="col-sm-8">KFC Nguyễn Trãi</dd>
+                <dd class="col-sm-8">@Model.Dish?.MaChiNhanh</dd>
                 <dt class="col-sm-4">Giá</dt>
-                <dd class="col-sm-8">45,000</dd>
+                <dd class="col-sm-8">@Model.Dish?.Gia.ToString("N0")</dd>
                 <dt class="col-sm-4">Mức cay</dt>
-                <dd class="col-sm-8">3/7</dd>
+                <dd class="col-sm-8">@Model.Dish?.MucCay/7</dd>
                 <dt class="col-sm-4">Hình ảnh</dt>
-                <dd class="col-sm-8"><img src="/img/ga-ran.jpg" alt="Gà rán" style="max-width:120px;"></dd>
+                <dd class="col-sm-8">
+                    @if (!string.IsNullOrEmpty(Model.Dish?.HinhAnh))
+                    {
+                        <img src="@Model.Dish.HinhAnh" alt="@Model.Dish.TenMonAn" style="max-width:120px;" />
+                    }
+                </dd>
                 <dt class="col-sm-4">Có sẵn</dt>
-                <dd class="col-sm-8"><span class="badge bg-success">Có</span></dd>
+                <dd class="col-sm-8">
+                    <span class="badge @(Model.Dish?.CoSan == true ? "bg-success" : "bg-danger")">@(Model.Dish?.CoSan == true ? "Có" : "Hết")</span>
+                </dd>
             </dl>
             <div class="text-end mt-4">
-                <a asp-page="Edit" asp-route-id="GA01" class="btn btn-success me-2">Sửa</a>
+                <a asp-page="Edit" asp-route-id="@Model.Dish?.MaMonAn" class="btn btn-success me-2">Sửa</a>
                 <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
             </div>
         </div>

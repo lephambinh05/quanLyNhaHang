@@ -1,0 +1,28 @@
+@page
+@model NhaHang.Pages.DanhMucPages.CreateModel
+@{
+    ViewData["Title"] = "Thêm danh mục";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<h2>Thêm danh mục</h2>
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Category.TenDanhMuc" class="form-label">Tên danh mục</label>
+        <input asp-for="Category.TenDanhMuc" class="form-control" />
+        <span asp-validation-for="Category.TenDanhMuc" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Category.MoTa" class="form-label">Mô tả</label>
+        <textarea asp-for="Category.MoTa" class="form-control"></textarea>
+        <span asp-validation-for="Category.MoTa" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+</form> 

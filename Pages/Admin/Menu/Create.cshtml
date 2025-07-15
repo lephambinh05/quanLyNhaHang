@@ -1,5 +1,5 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Menu.CreateModel
 @{
     ViewData["Title"] = "Thêm món ăn";
 }
@@ -9,45 +9,47 @@
         <div class="card-body">
             <form enctype="multipart/form-data" method="post">
                 <div class="mb-3">
-                    <label class="form-label">Mã món</label>
-                    <input type="text" class="form-control" name="Dish.MaMonAn" required />
+                    <label asp-for="Dish.MaMonAn" class="form-label">Mã món</label>
+                    <input asp-for="Dish.MaMonAn" class="form-control" required />
+                    <span asp-validation-for="Dish.MaMonAn" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Tên món</label>
-                    <input type="text" class="form-control" name="Dish.TenMonAn" required />
+                    <label asp-for="Dish.TenMonAn" class="form-label">Tên món</label>
+                    <input asp-for="Dish.TenMonAn" class="form-control" required />
+                    <span asp-validation-for="Dish.TenMonAn" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Danh mục</label>
-                    <select class="form-select" name="Dish.MaDanhMuc" required>
-                        <option>Gà rán</option>
-                        <option>Burger</option>
-                    </select>
+                    <label asp-for="Dish.MaDanhMuc" class="form-label">Danh mục</label>
+                    <input asp-for="Dish.MaDanhMuc" class="form-control" required />
+                    <span asp-validation-for="Dish.MaDanhMuc" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Chi nhánh</label>
-                    <select class="form-select" name="Dish.MaChiNhanh" required>
-                        <option>KFC Nguyễn Trãi</option>
-                        <option>KFC Lê Lợi</option>
-                    </select>
+                    <label asp-for="Dish.MaChiNhanh" class="form-label">Chi nhánh</label>
+                    <input asp-for="Dish.MaChiNhanh" class="form-control" required />
+                    <span asp-validation-for="Dish.MaChiNhanh" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Giá</label>
-                    <input type="number" class="form-control" name="Dish.Gia" required />
+                    <label asp-for="Dish.Gia" class="form-label">Giá</label>
+                    <input asp-for="Dish.Gia" class="form-control" required />
+                    <span asp-validation-for="Dish.Gia" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Mức cay</label>
-                    <input type="number" class="form-control" name="Dish.MucCay" min="0" max="7" />
+                    <label asp-for="Dish.MucCay" class="form-label">Mức cay</label>
+                    <input asp-for="Dish.MucCay" class="form-control" min="0" max="7" />
+                    <span asp-validation-for="Dish.MucCay" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Hình ảnh</label>
-                    <input type="file" class="form-control" name="ImageFile" accept="image/*" />
+                    <label asp-for="ImageFile" class="form-label">Hình ảnh</label>
+                    <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Có sẵn</label>
-                    <select class="form-select" name="Dish.CoSan">
+                    <label asp-for="Dish.CoSan" class="form-label">Có sẵn</label>
+                    <select asp-for="Dish.CoSan" class="form-select">
                         <option value="true">Có</option>
                         <option value="false">Hết</option>
                     </select>
+                    <span asp-validation-for="Dish.CoSan" class="text-danger"></span>
                 </div>
                 <div class="text-end">
                     <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>

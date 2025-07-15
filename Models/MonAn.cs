@@ -30,11 +30,9 @@ namespace NhaHang.Models
         [StringLength(255)]
         public string HinhAnh { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string MaDanhMuc { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string MaChiNhanh { get; set; }
 

@@ -5,7 +5,7 @@ using NhaHang.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NhaHang.Pages.QuanTriVienPages
+namespace NhaHang.Pages.Admin.QuanTriVien
 {
     [Authorize(Roles = "SuperAdmin")]
     public class IndexModel : PageModel
@@ -15,7 +15,7 @@ namespace NhaHang.Pages.QuanTriVienPages
         {
             _service = service;
         }
-        public List<QuanTriVien> Admins { get; set; } = new();
+        public List<NhaHang.Models.QuanTriVien> Admins { get; set; } = new();
         public async Task OnGetAsync()
         {
             Admins = await _service.GetAllAsync();

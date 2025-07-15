@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NhaHang.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using System.Collections.Generic;
 
 namespace NhaHang.Pages.Admin
 {
@@ -30,7 +34,7 @@ namespace NhaHang.Pages.Admin
 
         public void OnGet() { }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
             if (!ModelState.IsValid) return Page();
             var admin = await _adminService.LoginAsync(Input.Email, Input.Password);
@@ -39,8 +43,19 @@ namespace NhaHang.Pages.Admin
                 ErrorMessage = "Tài khoản hoặc mật khẩu không đúng, hoặc bạn không có quyền truy cập.";
                 return Page();
             }
-            // TODO: Đăng nhập (set cookie/session)
-            // Chuyển hướng về dashboard admin
+            // Đăng nhập (set cookie/session)
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, admin.HoTen ?? admin.Email),
+                new Claim(ClaimTypes.Email, admin.Email),
+                new Claim(ClaimTypes.Role, admin.VaiTro ?? "")
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, "AdminCookie");
+            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            await HttpContext.SignInAsync("AdminCookie", claimsPrincipal);
+            // Nếu có ReturnUrl thì chuyển về đó, không thì về dashboard
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                return Redirect(returnUrl);
             return RedirectToPage("/Admin/Dashboard/Index");
         }
     }

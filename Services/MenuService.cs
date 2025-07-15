@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NhaHang.Models;
 using NhaHang.Data;
+using System.Linq;
 
 namespace NhaHang.Services
 {
@@ -40,6 +41,10 @@ namespace NhaHang.Services
         {
             var dish = await _context.MonAns.FindAsync(id);
             if (dish == null) return false;
+            // Xóa tất cả các bản ghi ChiTietDonHang liên quan
+            var chiTietList = await _context.ChiTietDonHangs.Where(c => c.MaMonAn == id).ToListAsync();
+            if (chiTietList.Count > 0)
+                _context.ChiTietDonHangs.RemoveRange(chiTietList);
             _context.MonAns.Remove(dish);
             return await _context.SaveChangesAsync() > 0;
         }

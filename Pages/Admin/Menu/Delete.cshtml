@@ -1,5 +1,5 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Menu.DeleteModel
 @{
     ViewData["Title"] = "Xóa món ăn";
 }
@@ -8,10 +8,10 @@
         <div class="card-header bg-white fw-bold text-danger">Xác nhận xóa món ăn</div>
         <div class="card-body">
             <div class="alert alert-danger mb-4">
-                <i class="fa fa-exclamation-triangle me-2"></i>Bạn có chắc chắn muốn xóa món <strong>Gà rán giòn cay</strong> không? Thao tác này không thể hoàn tác!
+                <i class="fa fa-exclamation-triangle me-2"></i>Bạn có chắc chắn muốn xóa món <strong>@Model.Dish?.TenMonAn</strong> không? Thao tác này không thể hoàn tác!
             </div>
-            <form>
-                <input type="hidden" value="GA01" />
+            <form method="post">
+                <input type="hidden" asp-for="Dish.MaMonAn" />
                 <div class="text-end">
                     <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
                     <button type="submit" class="btn btn-danger">Xóa</button>

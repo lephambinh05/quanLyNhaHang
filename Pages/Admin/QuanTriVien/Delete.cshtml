@@ -1,0 +1,19 @@
+@page
+@model NhaHang.Pages.Admin.QuanTriVien.DeleteModel
+@{
+    ViewData["Title"] = "Xóa quản trị viên";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<h2>Xóa quản trị viên</h2>
+<div class="alert alert-warning">Bạn có chắc chắn muốn xóa quản trị viên <b>@Model.Admin?.Email</b> không?</div>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-page="Index" class="btn btn-secondary">Hủy</a>
+</form> 

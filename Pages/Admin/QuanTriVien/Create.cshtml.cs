@@ -5,7 +5,7 @@ using NhaHang.Models;
 using NhaHang.Services;
 using System.Threading.Tasks;
 
-namespace NhaHang.Pages.QuanTriVienPages
+namespace NhaHang.Pages.Admin.QuanTriVien
 {
     [Authorize(Roles = "SuperAdmin")]
     public class CreateModel : PageModel
@@ -16,7 +16,7 @@ namespace NhaHang.Pages.QuanTriVienPages
             _service = service;
         }
         [BindProperty]
-        public QuanTriVien Admin { get; set; } = new();
+        public NhaHang.Models.QuanTriVien Admin { get; set; } = new();
         public void OnGet() { }
         public async Task<IActionResult> OnPostAsync()
         {

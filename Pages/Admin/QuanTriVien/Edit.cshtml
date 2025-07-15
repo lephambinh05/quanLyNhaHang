@@ -1,0 +1,46 @@
+@page
+@model NhaHang.Pages.Admin.QuanTriVien.EditModel
+@{
+    ViewData["Title"] = "Sửa quản trị viên";
+}
+<h2>Sửa quản trị viên</h2>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Admin.Email" class="form-label">Email</label>
+        <input asp-for="Admin.Email" class="form-control" />
+        <span asp-validation-for="Admin.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Admin.HoTen" class="form-label">Họ tên</label>
+        <input asp-for="Admin.HoTen" class="form-control" />
+        <span asp-validation-for="Admin.HoTen" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Admin.MatKhau" class="form-label">Mật khẩu mới (để trống nếu không đổi)</label>
+        <input asp-for="Admin.MatKhau" type="password" class="form-control" />
+        <span asp-validation-for="Admin.MatKhau" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Admin.VaiTro" class="form-label">Vai trò</label>
+        <select asp-for="Admin.VaiTro" class="form-select">
+            <option value="SuperAdmin">SuperAdmin</option>
+            <option value="Manager">Manager</option>
+        </select>
+        <span asp-validation-for="Admin.VaiTro" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Admin.MaChiNhanh" class="form-label">Mã chi nhánh</label>
+        <input asp-for="Admin.MaChiNhanh" class="form-control" />
+        <span asp-validation-for="Admin.MaChiNhanh" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+</form> 

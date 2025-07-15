@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Quản lý chi nhánh";
 }
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="mb-0">Danh sách chi nhánh</h3>
     <a class="btn btn-primary" asp-page="Create"><i class="fa fa-plus me-2"></i>Thêm chi nhánh</a>

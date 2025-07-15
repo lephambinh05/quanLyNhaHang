@@ -1,0 +1,40 @@
+@page
+@model NhaHang.Pages.Admin.QuanTriVien.IndexModel
+@{
+    ViewData["Title"] = "Quản trị viên";
+}
+<h2>Quản trị viên</h2>
+<a asp-page="Create" class="btn btn-success mb-3">Thêm quản trị viên</a>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Họ tên</th>
+            <th>Vai trò</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var admin in Model.Admins)
+    {
+        <tr>
+            <td>@admin.Email</td>
+            <td>@admin.HoTen</td>
+            <td>@admin.VaiTro</td>
+            <td>
+                <a asp-page="Details" asp-route-id="@admin.MaQuanTriVien" class="btn btn-info btn-sm">Xem</a>
+                <a asp-page="Edit" asp-route-id="@admin.MaQuanTriVien" class="btn btn-primary btn-sm">Sửa</a>
+                <a asp-page="Delete" asp-route-id="@admin.MaQuanTriVien" class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table> 

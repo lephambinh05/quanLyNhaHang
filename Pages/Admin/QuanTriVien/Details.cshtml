@@ -1,0 +1,15 @@
+@page
+@model NhaHang.Pages.Admin.QuanTriVien.DetailsModel
+@{
+    ViewData["Title"] = "Chi tiết quản trị viên";
+}
+<h2>Chi tiết quản trị viên</h2>
+<dl class="row">
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Admin?.Email</dd>
+    <dt class="col-sm-3">Họ tên</dt>
+    <dd class="col-sm-9">@Model.Admin?.HoTen</dd>
+    <dt class="col-sm-3">Vai trò</dt>
+    <dd class="col-sm-9">@Model.Admin?.VaiTro</dd>
+</dl>
+<a asp-page="Index" class="btn btn-secondary">Quay lại</a> 

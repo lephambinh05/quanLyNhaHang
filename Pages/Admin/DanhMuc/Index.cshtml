@@ -1,0 +1,38 @@
+@page
+@model NhaHang.Pages.DanhMucPages.IndexModel
+@{
+    ViewData["Title"] = "Danh mục";
+}
+<h2>Danh mục</h2>
+<a asp-page="Create" class="btn btn-success mb-3">Thêm danh mục</a>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Tên danh mục</th>
+            <th>Mô tả</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var cat in Model.Categories)
+    {
+        <tr>
+            <td>@cat.TenDanhMuc</td>
+            <td>@cat.MoTa</td>
+            <td>
+                <a asp-page="Details" asp-route-id="@cat.MaDanhMuc" class="btn btn-info btn-sm">Xem</a>
+                <a asp-page="Edit" asp-route-id="@cat.MaDanhMuc" class="btn btn-primary btn-sm">Sửa</a>
+                <a asp-page="Delete" asp-route-id="@cat.MaDanhMuc" class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table> 

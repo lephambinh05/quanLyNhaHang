@@ -4,7 +4,7 @@ using NhaHang.Models;
 using NhaHang.Services;
 using System.Threading.Tasks;
 
-namespace NhaHang.Pages.QuanTriVienPages
+namespace NhaHang.Pages.Admin.QuanTriVien
 {
     [Authorize(Roles = "SuperAdmin")]
     public class DetailsModel : PageModel
@@ -14,7 +14,7 @@ namespace NhaHang.Pages.QuanTriVienPages
         {
             _service = service;
         }
-        public QuanTriVien? Admin { get; set; }
+        public NhaHang.Models.QuanTriVien? Admin { get; set; }
         public async Task OnGetAsync(string id)
         {
             Admin = await _service.GetByIdAsync(id);

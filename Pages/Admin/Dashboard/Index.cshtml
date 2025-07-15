@@ -4,6 +4,16 @@
     ViewData["Title"] = "Dashboard";
 }
 
+<div class="alert alert-info mb-3">
+    <strong>Debug Claims:</strong>
+    <ul>
+    @foreach (var claim in User.Claims)
+    {
+        <li>@claim.Type: <b>@claim.Value</b></li>
+    }
+    </ul>
+</div>
+
 <div class="row">
     <div class="col-md-3 mb-4">
         <div class="card bg-primary text-white">
@@ -144,41 +154,47 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Doanh thu 7 ngày gần nhất
-        var ctx = document.getElementById('revenueChart').getContext('2d');
-        var revenueChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
-                datasets: [{
-                    label: 'Doanh thu (triệu VNĐ)',
-                    data: [12, 15, 10, 18, 20, 22, 25],
-                    borderColor: '#d32f2f',
-                    backgroundColor: 'rgba(211,47,47,0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } }
-            }
-        });
+        var revenueCanvas = document.getElementById('revenueChart');
+        if (revenueCanvas) {
+            var ctx = revenueCanvas.getContext('2d');
+            var revenueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+                    datasets: [{
+                        label: 'Doanh thu (triệu VNĐ)',
+                        data: [12, 15, 10, 18, 20, 22, 25],
+                        borderColor: '#d32f2f',
+                        backgroundColor: 'rgba(211,47,47,0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
         // Top món bán chạy
-        var ctx2 = document.getElementById('topDishesChart').getContext('2d');
-        var topDishesChart = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['Gà rán', 'Burger', 'Khoai tây', 'Cơm gà', 'Pepsi'],
-                datasets: [{
-                    label: 'Số lượng',
-                    data: [120, 95, 80, 60, 55],
-                    backgroundColor: ['#d32f2f', '#ffc107', '#388e3c', '#1976d2', '#b71c1c']
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                plugins: { legend: { display: false } }
-            }
-        });
+        var topDishesCanvas = document.getElementById('topDishesChart');
+        if (topDishesCanvas) {
+            var ctx2 = topDishesCanvas.getContext('2d');
+            var topDishesChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Gà rán', 'Burger', 'Khoai tây', 'Cơm gà', 'Pepsi'],
+                    datasets: [{
+                        label: 'Số lượng',
+                        data: [120, 95, 80, 60, 55],
+                        backgroundColor: ['#d32f2f', '#ffc107', '#388e3c', '#1976d2', '#b71c1c']
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
     </script>
 } 

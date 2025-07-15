@@ -1,0 +1,19 @@
+@page
+@model NhaHang.Pages.DanhMucPages.DeleteModel
+@{
+    ViewData["Title"] = "Xóa danh mục";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<h2>Xóa danh mục</h2>
+<div class="alert alert-warning">Bạn có chắc chắn muốn xóa danh mục <b>@Model.Category?.TenDanhMuc</b> không?</div>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-page="Index" class="btn btn-secondary">Hủy</a>
+</form> 
