@@ -11,6 +11,17 @@
 {
     <div class="alert alert-danger">@TempData["Error"]</div>
 }
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+        </ul>
+    </div>
+}
 <h2>Thêm quản trị viên</h2>
 <form method="post">
     <div class="mb-3">
@@ -35,6 +46,13 @@
             <option value="Manager">Manager</option>
         </select>
         <span asp-validation-for="Admin.VaiTro" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Admin.MaChiNhanh" class="form-label">Chi nhánh</label>
+        <select asp-for="Admin.MaChiNhanh" class="form-control" asp-items="Model.BranchOptions">
+            <option value="">-- Chọn chi nhánh --</option>
+        </select>
+        <span asp-validation-for="Admin.MaChiNhanh" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Thêm</button>
     <a asp-page="Index" class="btn btn-secondary">Quay lại</a>

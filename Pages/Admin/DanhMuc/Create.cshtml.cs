@@ -7,6 +7,7 @@ using NhaHang.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace NhaHang.Pages.DanhMucPages
 {
@@ -33,6 +34,8 @@ namespace NhaHang.Pages.DanhMucPages
             var branches = await _branchService.GetAllAsync();
             BranchOptions = branches.Select(b => new SelectListItem { Value = b.MaChiNhanh, Text = b.TenChiNhanh }).ToList();
             if (!ModelState.IsValid) return Page();
+            // Tự sinh mã danh mục (ví dụ: DM + 6 ký tự số ngẫu nhiên)
+            Category.MaDanhMuc = $"DM{Guid.NewGuid().ToString("N").Substring(0,6).ToUpper()}";
             var result = await _danhMucService.CreateAsync(Category);
             if (result)
             {

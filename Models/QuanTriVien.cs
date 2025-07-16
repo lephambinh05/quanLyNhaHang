@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace NhaHang.Models
 {
@@ -9,9 +10,10 @@ namespace NhaHang.Models
     /// </summary>
     public class QuanTriVien
     {
+        // [Required]  // Đã xóa để tránh lỗi required khi tự sinh mã
         [Key]
         [StringLength(10)]
-        public string MaQuanTriVien { get; set; }
+        public string? MaQuanTriVien { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -36,6 +38,7 @@ namespace NhaHang.Models
 
         // Navigation properties
         [ForeignKey("MaChiNhanh")]
+        [ValidateNever]
         public ChiNhanh ChiNhanh { get; set; }
     }
 } 

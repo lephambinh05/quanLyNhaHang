@@ -27,6 +27,18 @@ namespace NhaHang.Pages.Admin.QuanTriVien
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid) return Page();
+            // Lấy thông tin cũ từ DB
+            var oldAdmin = await _service.GetByIdAsync(Admin.MaQuanTriVien!);
+            if (oldAdmin == null)
+            {
+                ModelState.AddModelError(string.Empty, "Không tìm thấy tài khoản quản trị.");
+                return Page();
+            }
+            // Nếu không nhập mật khẩu mới thì giữ nguyên mật khẩu cũ
+            if (string.IsNullOrWhiteSpace(Admin.MatKhau))
+            {
+                Admin.MatKhau = oldAdmin.MatKhau;
+            }
             var result = await _service.UpdateAsync(Admin);
             if (result)
             {

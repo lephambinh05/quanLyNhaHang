@@ -24,11 +24,8 @@
 }
 <h2>Thêm danh mục</h2>
 <form method="post">
-    <div class="mb-3">
-        <label asp-for="Category.MaDanhMuc" class="form-label">Mã danh mục</label>
-        <input asp-for="Category.MaDanhMuc" class="form-control" />
-        <span asp-validation-for="Category.MaDanhMuc" class="text-danger"></span>
-    </div>
+    @* Ẩn input mã danh mục *@
+    <input type="hidden" asp-for="Category.MaDanhMuc" />
     <div class="mb-3">
         <label asp-for="Category.TenDanhMuc" class="form-label">Tên danh mục</label>
         <input asp-for="Category.TenDanhMuc" class="form-control" />

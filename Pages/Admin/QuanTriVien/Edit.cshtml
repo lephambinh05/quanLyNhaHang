@@ -13,6 +13,7 @@
     <div class="alert alert-danger">@TempData["Error"]</div>
 }
 <form method="post">
+    <input type="hidden" asp-for="Admin.MaQuanTriVien" />
     <div class="mb-3">
         <label asp-for="Admin.Email" class="form-label">Email</label>
         <input asp-for="Admin.Email" class="form-control" />
