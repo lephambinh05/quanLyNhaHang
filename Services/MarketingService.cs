@@ -26,6 +26,14 @@ namespace NhaHang.Services
 
         public async Task<bool> CreateAsync(KhuyenMai promo)
         {
+            // Sinh mã tự động: KM + số thứ tự tăng dần
+            var last = await _context.KhuyenMais.OrderByDescending(k => k.MaKhuyenMai).FirstOrDefaultAsync();
+            int nextNumber = 1;
+            if (last != null && last.MaKhuyenMai.Length > 2 && int.TryParse(last.MaKhuyenMai.Substring(2), out int lastNum))
+            {
+                nextNumber = lastNum + 1;
+            }
+            promo.MaKhuyenMai = $"KM{nextNumber:D2}";
             _context.KhuyenMais.Add(promo);
             return await _context.SaveChangesAsync() > 0;
         }

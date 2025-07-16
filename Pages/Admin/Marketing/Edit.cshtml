@@ -1,5 +1,5 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Marketing.EditModel
 @{
     ViewData["Title"] = "Sửa khuyến mãi";
 }
@@ -7,10 +7,18 @@
     <div class="card shadow-sm border-0 mt-4">
         <div class="card-header bg-white fw-bold">Sửa thông tin khuyến mãi</div>
         <div class="card-body">
-            <form>
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">@TempData["Success"]</div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+            }
+            <form method="post">
                 <div class="mb-3">
                     <label class="form-label">Mã khuyến mãi</label>
-                    <input type="text" class="form-control" value="KM01" readonly />
+                    <input asp-for="Promotion.MaKhuyenMai" class="form-control" readonly />
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Mã giảm giá</label>
@@ -32,21 +40,30 @@
                     <label class="form-label">Ngày kết thúc</label>
                     <input type="date" class="form-control" value="2024-06-30" required />
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Toàn hệ thống</label>
-                    <select class="form-select">
-                        <option selected>Có</option>
-                        <option>Không</option>
-                    </select>
-                </div>
+                @* Đã loại bỏ phần chọn Toàn hệ thống *@
                 <div class="mb-3">
                     <label class="form-label">Chi nhánh áp dụng</label>
-                    <select class="form-select">
-                        <option selected>Toàn hệ thống</option>
-                        <option>KFC Nguyễn Trãi</option>
-                        <option>KFC Lê Lợi</option>
+                    <select class="form-select" id="chiNhanhSelect" name="Promotion.MaChiNhanh">
+                        @{ var maChiNhanh = Model.Promotion.MaChiNhanh; }
+                        <option value="ALL" selected="@(maChiNhanh == "ALL" ? "selected" : null)">Toàn hệ thống</option>
+                        @if (Model.Branches != null)
+                        {
+                            foreach (var branch in Model.Branches)
+                            {
+                                <option value="@branch.MaChiNhanh" selected="@(maChiNhanh == branch.MaChiNhanh ? "selected" : null)">@branch.TenChiNhanh</option>
+                            }
+                        }
                     </select>
+                    <span asp-validation-for="Promotion.MaChiNhanh" class="text-danger"></span>
                 </div>
+                <script>
+                    const chiNhanhSelect = document.getElementById('chiNhanhSelect');
+                    function syncDropdowns() {
+                        // No longer needed as ToanHeThong is removed
+                    }
+                    chiNhanhSelect.addEventListener('change', syncDropdowns);
+                    window.addEventListener('DOMContentLoaded', syncDropdowns);
+                </script>
                 <div class="mb-3">
                     <label class="form-label">Hình ảnh banner</label>
                     <input type="text" class="form-control" value="/img/banner.jpg" />

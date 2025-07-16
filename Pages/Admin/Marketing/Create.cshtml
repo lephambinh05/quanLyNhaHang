@@ -1,5 +1,5 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Marketing.CreateModel
 @{
     ViewData["Title"] = "Thêm khuyến mãi";
 }
@@ -7,57 +7,69 @@
     <div class="card shadow-sm border-0 mt-4">
         <div class="card-header bg-white fw-bold">Thêm khuyến mãi mới</div>
         <div class="card-body">
-            <form enctype="multipart/form-data" method="post">
-                <div class="mb-3">
-                    <label class="form-label">Mã khuyến mãi</label>
-                    <input type="text" class="form-control" name="Promotion.MaKhuyenMai" required />
-                </div>
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">@TempData["Success"]</div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+            }
+            <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
+            <form method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label">Mã giảm giá</label>
                     <input type="text" class="form-control" name="Promotion.MaGiamGia" required />
+                    <span asp-validation-for="Promotion.MaGiamGia" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Mô tả</label>
                     <input type="text" class="form-control" name="Promotion.MoTa" />
+                    <span asp-validation-for="Promotion.MoTa" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tỷ lệ giảm (%)</label>
                     <input type="number" class="form-control" name="Promotion.TyLeGiam" min="0" max="100" required />
+                    <span asp-validation-for="Promotion.TyLeGiam" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ngày bắt đầu</label>
                     <input type="date" class="form-control" name="Promotion.NgayBatDau" required />
+                    <span asp-validation-for="Promotion.NgayBatDau" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ngày kết thúc</label>
                     <input type="date" class="form-control" name="Promotion.NgayKetThuc" required />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Toàn hệ thống</label>
-                    <select class="form-select" name="Promotion.ToanHeThong">
-                        <option value="true">Có</option>
-                        <option value="false">Không</option>
-                    </select>
+                    <span asp-validation-for="Promotion.NgayKetThuc" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Chi nhánh áp dụng</label>
-                    <select class="form-select" name="Promotion.MaChiNhanh">
-                        <option value="">Toàn hệ thống</option>
-                        <option value="CN01">KFC Nguyễn Trãi</option>
-                        <option value="CN02">KFC Lê Lợi</option>
+                    <select class="form-select" id="chiNhanhSelect" name="Promotion.MaChiNhanh">
+                        <option value="ALL">Toàn hệ thống</option>
+                        @if (Model.Branches != null)
+                        {
+                            foreach (var branch in Model.Branches)
+                            {
+                                <option value="@branch.MaChiNhanh">@branch.TenChiNhanh</option>
+                            }
+                        }
                     </select>
+                    <span asp-validation-for="Promotion.MaChiNhanh" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Hình ảnh banner</label>
                     <input type="file" class="form-control" name="BannerFile" accept="image/*" />
+                    <span asp-validation-for="BannerFile" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tiêu đề banner</label>
                     <input type="text" class="form-control" name="Promotion.TieuDeBanner" />
+                    <span asp-validation-for="Promotion.TieuDeBanner" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nội dung banner</label>
                     <input type="text" class="form-control" name="Promotion.NoiDungBanner" />
+                    <span asp-validation-for="Promotion.NoiDungBanner" class="text-danger"></span>
                 </div>
                 <div class="text-end">
                     <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>

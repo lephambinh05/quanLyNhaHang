@@ -1,5 +1,5 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Marketing.IndexModel
 @{
     ViewData["Title"] = "Quản lý khuyến mãi";
 }
@@ -47,32 +47,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>KM01</td>
-                        <td>KFC50</td>
-                        <td>Giảm 50% cho đơn đầu tiên</td>
-                        <td>50%</td>
-                        <td>01/06 - 30/06</td>
-                        <td>Toàn hệ thống</td>
-                        <td><span class="badge bg-success">Có</span></td>
-                        <td>
-                            <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="KM01"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="KM01"><i class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>KM02</td>
-                        <td>KFC20</td>
-                        <td>Giảm 20% cho khách thân thiết</td>
-                        <td>20%</td>
-                        <td>01/06 - 15/06</td>
-                        <td>KFC Nguyễn Trãi</td>
-                        <td><span class="badge bg-danger">Không</span></td>
-                        <td>
-                            <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="KM02"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="KM02"><i class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
+                @if (Model.Promotions != null && Model.Promotions.Count > 0)
+                {
+                    foreach (var promo in Model.Promotions)
+                    {
+                        <tr>
+                            <td>@promo.MaKhuyenMai</td>
+                            <td>@promo.MaGiamGia</td>
+                            <td>@promo.MoTa</td>
+                            <td>@promo.TyLeGiam%</td>
+                            <td>@promo.NgayBatDau.ToString("dd/MM/yyyy") - @promo.NgayKetThuc.ToString("dd/MM/yyyy")</td>
+                            <td>@(promo.ToanHeThong ? "Toàn hệ thống" : promo.ChiNhanh?.TenChiNhanh ?? promo.MaChiNhanh)</td>
+                            <td>
+                                @if (promo.ToanHeThong)
+                                {
+                                    <span class="badge bg-success">Có</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Không</span>
+                                }
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-success me-1" asp-page="Edit" asp-route-id="@promo.MaKhuyenMai"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="@promo.MaKhuyenMai"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="8" class="text-center">Không có khuyến mãi nào.</td></tr>
+                }
                 </tbody>
             </table>
         </div>
