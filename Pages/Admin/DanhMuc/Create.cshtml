@@ -11,8 +11,24 @@
 {
     <div class="alert alert-danger">@TempData["Error"]</div>
 }
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+        </ul>
+    </div>
+}
 <h2>Thêm danh mục</h2>
 <form method="post">
+    <div class="mb-3">
+        <label asp-for="Category.MaDanhMuc" class="form-label">Mã danh mục</label>
+        <input asp-for="Category.MaDanhMuc" class="form-control" />
+        <span asp-validation-for="Category.MaDanhMuc" class="text-danger"></span>
+    </div>
     <div class="mb-3">
         <label asp-for="Category.TenDanhMuc" class="form-label">Tên danh mục</label>
         <input asp-for="Category.TenDanhMuc" class="form-control" />
@@ -22,6 +38,13 @@
         <label asp-for="Category.MoTa" class="form-label">Mô tả</label>
         <textarea asp-for="Category.MoTa" class="form-control"></textarea>
         <span asp-validation-for="Category.MoTa" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Category.MaChiNhanh" class="form-label">Chi nhánh</label>
+        <select asp-for="Category.MaChiNhanh" class="form-control" asp-items="Model.BranchOptions">
+            <option value="">-- Chọn chi nhánh --</option>
+        </select>
+        <span asp-validation-for="Category.MaChiNhanh" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Thêm</button>
     <a asp-page="Index" class="btn btn-secondary">Quay lại</a>

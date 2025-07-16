@@ -20,12 +20,24 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Dish.MaDanhMuc" class="form-label">Danh mục</label>
-                    <input asp-for="Dish.MaDanhMuc" class="form-control" required />
+                    <select asp-for="Dish.MaDanhMuc" class="form-select" required>
+                        <option value="">-- Chọn danh mục --</option>
+                        @foreach (var cat in Model.Categories)
+                        {
+                            <option value="@cat.MaDanhMuc">@cat.TenDanhMuc</option>
+                        }
+                    </select>
                     <span asp-validation-for="Dish.MaDanhMuc" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Dish.MaChiNhanh" class="form-label">Chi nhánh</label>
-                    <input asp-for="Dish.MaChiNhanh" class="form-control" required />
+                    <select asp-for="Dish.MaChiNhanh" class="form-select" required>
+                        <option value="">-- Chọn chi nhánh --</option>
+                        @foreach (var cn in Model.Branches)
+                        {
+                            <option value="@cn.MaChiNhanh">@cn.TenChiNhanh</option>
+                        }
+                    </select>
                     <span asp-validation-for="Dish.MaChiNhanh" class="text-danger"></span>
                 </div>
                 <div class="mb-3">

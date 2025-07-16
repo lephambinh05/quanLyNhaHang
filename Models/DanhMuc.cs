@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace NhaHang.Models
 {
@@ -25,7 +26,9 @@ namespace NhaHang.Models
 
         // Navigation properties
         [ForeignKey("MaChiNhanh")]
+        [ValidateNever]
         public ChiNhanh ChiNhanh { get; set; }
+        [ValidateNever]
         public ICollection<MonAn> MonAns { get; set; }
     }
 } 

@@ -16,7 +16,7 @@
     <div class="card shadow-sm border-0 mt-4">
         <div class="card-header bg-white fw-bold">Sửa thông tin món ăn</div>
         <div class="card-body">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label asp-for="Dish.MaMonAn" class="form-label">Mã món</label>
                     <input asp-for="Dish.MaMonAn" class="form-control" readonly />
@@ -29,12 +29,24 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Dish.MaDanhMuc" class="form-label">Danh mục</label>
-                    <input asp-for="Dish.MaDanhMuc" class="form-control" required />
+                    <select asp-for="Dish.MaDanhMuc" class="form-select" required>
+                        <option value="">-- Chọn danh mục --</option>
+                        @foreach (var cat in Model.Categories)
+                        {
+                            <option value="@cat.MaDanhMuc">@cat.TenDanhMuc</option>
+                        }
+                    </select>
                     <span asp-validation-for="Dish.MaDanhMuc" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Dish.MaChiNhanh" class="form-label">Chi nhánh</label>
-                    <input asp-for="Dish.MaChiNhanh" class="form-control" required />
+                    <select asp-for="Dish.MaChiNhanh" class="form-select" required>
+                        <option value="">-- Chọn chi nhánh --</option>
+                        @foreach (var cn in Model.Branches)
+                        {
+                            <option value="@cn.MaChiNhanh">@cn.TenChiNhanh</option>
+                        }
+                    </select>
                     <span asp-validation-for="Dish.MaChiNhanh" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
@@ -48,9 +60,16 @@
                     <span asp-validation-for="Dish.MucCay" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Dish.HinhAnh" class="form-label">Hình ảnh</label>
-                    <input asp-for="Dish.HinhAnh" class="form-control" />
-                    <span asp-validation-for="Dish.HinhAnh" class="text-danger"></span>
+                    <label asp-for="ImageFile" class="form-label">Hình ảnh mới</label>
+                    <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    @if (!string.IsNullOrEmpty(Model.Dish.HinhAnh))
+                    {
+                        <div class="mt-2">
+                            <span>Ảnh hiện tại:</span><br />
+                            <img src="/img/@Model.Dish.HinhAnh" alt="Ảnh hiện tại" style="max-width:120px;" />
+                        </div>
+                    }
                 </div>
                 <div class="mb-3">
                     <label asp-for="Dish.CoSan" class="form-label">Có sẵn</label>

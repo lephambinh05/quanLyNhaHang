@@ -4,6 +4,7 @@ using NhaHang.Models;
 using NhaHang.Services;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace NhaHang.Pages.Menu
 {
@@ -11,18 +12,30 @@ namespace NhaHang.Pages.Menu
     {
         private readonly MenuService _menuService;
         private readonly ImageService _imageService;
-        public CreateModel(MenuService menuService, ImageService imageService)
+        private readonly BranchService _branchService;
+        private readonly DanhMucService _danhMucService;
+        public List<ChiNhanh> Branches { get; set; } = new();
+        public List<DanhMuc> Categories { get; set; } = new();
+        public CreateModel(MenuService menuService, ImageService imageService, BranchService branchService, DanhMucService danhMucService)
         {
             _menuService = menuService;
             _imageService = imageService;
+            _branchService = branchService;
+            _danhMucService = danhMucService;
         }
         [BindProperty]
         public MonAn Dish { get; set; } = new();
         [BindProperty]
         public IFormFile? ImageFile { get; set; }
-        public void OnGet() { }
+        public async void OnGet()
+        {
+            Branches = await _branchService.GetAllAsync();
+            Categories = await _danhMucService.GetAllAsync();
+        }
         public async Task<IActionResult> OnPostAsync()
         {
+            Branches = await _branchService.GetAllAsync();
+            Categories = await _danhMucService.GetAllAsync();
             if (ImageFile != null)
             {
                 var fileName = await _imageService.SaveImageAsync(ImageFile);
