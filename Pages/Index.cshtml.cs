@@ -23,6 +23,8 @@ namespace NhaHang.Pages
 
         public async Task OnGetAsync()
         {
+            var cart = HttpContext.Session.Get<List<CartItem>>("Cart") ?? new List<CartItem>();
+            ViewData["CartCount"] = cart.Count;
             // Lấy thực đơn nổi bật (6 món đầu tiên)
             var allDishes = await _menuService.GetAllAsync();
             FeaturedDishes = allDishes.Take(6).ToList();

@@ -19,6 +19,7 @@ namespace NhaHang.Data
         public DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public DbSet<HoaDon> HoaDons { get; set; }
         public DbSet<QuanTriVien> QuanTriViens { get; set; }
+        public DbSet<ThongTinThanhToan> ThongTinThanhToans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

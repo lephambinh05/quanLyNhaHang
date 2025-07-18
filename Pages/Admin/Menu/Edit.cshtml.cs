@@ -5,9 +5,11 @@ using NhaHang.Services;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NhaHang.Pages.Menu
 {
+    [Authorize(AuthenticationSchemes = "AdminCookie", Roles = "SuperAdmin,Admin")]
     public class EditModel : PageModel
     {
         private readonly MenuService _menuService;

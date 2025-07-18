@@ -38,7 +38,7 @@ namespace NhaHang.Pages.Admin
         {
             if (!ModelState.IsValid) return Page();
             var admin = await _adminService.LoginAsync(Input.Email, Input.Password);
-            if (admin == null || (admin.VaiTro != "SuperAdmin" && admin.VaiTro != "Manager"))
+            if (admin == null || (admin.VaiTro != "SuperAdmin" && admin.VaiTro != "Admin"))
             {
                 ErrorMessage = "Tài khoản hoặc mật khẩu không đúng, hoặc bạn không có quyền truy cập.";
                 return Page();
@@ -53,6 +53,9 @@ namespace NhaHang.Pages.Admin
             var claimsIdentity = new ClaimsIdentity(claims, "AdminCookie");
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             await HttpContext.SignInAsync("AdminCookie", claimsPrincipal);
+            // Lưu thông tin admin vào session
+            HttpContext.Session.SetString("AdminEmail", admin.Email);
+            HttpContext.Session.SetString("AdminRole", admin.VaiTro ?? "");
             // Nếu có ReturnUrl thì chuyển về đó, không thì về dashboard
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);

@@ -1,34 +1,104 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Orders.DetailsModel
 @{
     ViewData["Title"] = "Chi tiết đơn hàng";
 }
-<div class="col-lg-8 mx-auto">
-    <div class="card shadow-sm border-0 mt-4">
-        <div class="card-header bg-white fw-bold">Chi tiết đơn hàng</div>
-        <div class="card-body">
-            <dl class="row mb-0">
-                <dt class="col-sm-4">Mã đơn</dt>
-                <dd class="col-sm-8">DH001</dd>
-                <dt class="col-sm-4">Khách hàng</dt>
-                <dd class="col-sm-8">Nguyễn Văn C</dd>
-                <dt class="col-sm-4">Chi nhánh</dt>
-                <dd class="col-sm-8">KFC Nguyễn Trãi</dd>
-                <dt class="col-sm-4">Ngày đặt</dt>
-                <dd class="col-sm-8">10/06/2024</dd>
-                <dt class="col-sm-4">Trạng thái</dt>
-                <dd class="col-sm-8"><span class="badge bg-warning text-dark">Đang chế biến</span></dd>
-                <dt class="col-sm-4">Tổng tiền</dt>
-                <dd class="col-sm-8">150,000</dd>
-                <dt class="col-sm-4">Danh sách món</dt>
-                <dd class="col-sm-8">Gà rán giòn cay (2), Burger gà (1)</dd>
-                <dt class="col-sm-4">Ghi chú</dt>
-                <dd class="col-sm-8">Không hành</dd>
-            </dl>
-            <div class="text-end mt-4">
-                <a asp-page="Edit" asp-route-id="DH001" class="btn btn-success me-2">Sửa</a>
-                <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+@if (Model.Order == null)
+{
+    <div class="alert alert-danger">Không tìm thấy đơn hàng</div>
+    <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+}
+else
+{
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm border-0 mt-4">
+            <div class="card-header bg-white fw-bold">Chi tiết đơn hàng</div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Mã đơn</dt>
+                    <dd class="col-sm-8">@Model.Order.MaDonHang</dd>
+                    <dt class="col-sm-4">Khách hàng</dt>
+                    <dd class="col-sm-8">@Model.Order.TenKhachHang</dd>
+                    <dt class="col-sm-4">Số điện thoại</dt>
+                    <dd class="col-sm-8">@Model.Order.SoDienThoai</dd>
+                    <dt class="col-sm-4">Địa chỉ giao hàng</dt>
+                    <dd class="col-sm-8">@Model.Order.DiaChiGiaoHang</dd>
+                    <dt class="col-sm-4">Chi nhánh</dt>
+                    <dd class="col-sm-8">@(Model.Order.ChiNhanh?.TenChiNhanh ?? "N/A")</dd>
+                    <dt class="col-sm-4">Ngày đặt</dt>
+                    <dd class="col-sm-8">@Model.Order.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</dd>
+                    <dt class="col-sm-4">Trạng thái</dt>
+                    <dd class="col-sm-8">
+                        @{
+                            var badgeClass = Model.Order.TrangThai switch
+                            {
+                                "Chờ xác nhận" => "bg-warning text-dark",
+                                "Đang chế biến" => "bg-info",
+                                "Đang giao" => "bg-primary",
+                                "Hoàn thành" => "bg-success",
+                                "Hủy" => "bg-danger",
+                                _ => "bg-secondary"
+                            };
+                        }
+                        <span class="badge @badgeClass">@Model.Order.TrangThai</span>
+                    </dd>
+                    <dt class="col-sm-4">Ghi chú</dt>
+                    <dd class="col-sm-8">@(string.IsNullOrEmpty(Model.Order.GhiChu) ? "Không có" : Model.Order.GhiChu)</dd>
+                </dl>
+
+                @if (Model.Order.ChiTietDonHangs?.Count > 0)
+                {
+                    <hr>
+                    <h6 class="mb-3">Chi tiết món ăn</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Món ăn</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Order.ChiTietDonHangs)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(item.MonAn?.TenMonAn ?? "N/A")
+                                            @if (item.MucCay > 0)
+                                            {
+                                                <span class="badge bg-danger ms-1">Cay @item.MucCay</span>
+                                            }
+                                        </td>
+                                        <td>@item.SoLuong</td>
+                                        <td>@item.DonGia.ToString("N0") ₫</td>
+                                        <td>@((item.SoLuong * item.DonGia).ToString("N0")) ₫</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-active">
+                                    <th colspan="3" class="text-end">Tổng cộng:</th>
+                                    <th>@Model.Order.ChiTietDonHangs.Sum(ct => ct.SoLuong * ct.DonGia).ToString("N0") ₫</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                }
+
+                <div class="text-end mt-4">
+                    <button class="btn btn-outline-secondary me-2" onclick="window.print()">
+                        <i class="fa fa-print me-1"></i>In hóa đơn
+                    </button>
+                    <a asp-page="Edit" asp-route-id="@Model.Order.MaDonHang" class="btn btn-success me-2">
+                        <i class="fa fa-edit me-1"></i>Cập nhật trạng thái
+                    </a>
+                    <a asp-page="Index" class="btn btn-secondary">
+                        <i class="fa fa-arrow-left me-1"></i>Quay lại
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div> 
+} 

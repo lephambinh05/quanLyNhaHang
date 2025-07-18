@@ -1,7 +1,7 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Orders.IndexModel
 @{
-    ViewData["Title"] = "POS - Đơn hàng";
+    ViewData["Title"] = "Quản lý đơn hàng";
 }
 @if (TempData["Success"] != null)
 {
@@ -12,30 +12,35 @@
     <div class="alert alert-danger">@TempData["Error"]</div>
 }
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="mb-0">Đơn hàng tại quầy</h3>
-    <a class="btn btn-primary" asp-page="Create"><i class="fa fa-plus me-2"></i>Tạo đơn mới</a>
+    <h3 class="mb-0">Quản lý đơn hàng</h3>
+    <div>
+        <form method="post" asp-page-handler="Export" style="display:inline">
+            <button type="submit" class="btn btn-outline-success"><i class="fa fa-file-excel me-1"></i>Xuất Excel</button>
+        </form>
+        <a class="btn btn-primary ms-2" asp-page="Create"><i class="fa fa-plus me-2"></i>Tạo đơn mới</a>
+    </div>
 </div>
 <div class="card shadow-sm border-0 mb-4">
     <div class="card-body">
-        <form class="row g-2 mb-3">
+        <form class="row g-2 mb-3" method="get">
             <div class="col-md-3">
-                <select class="form-select">
-                    <option>-- Trạng thái --</option>
-                    <option>Chưa xử lý</option>
-                    <option>Đang chế biến</option>
-                    <option>Đang giao</option>
-                    <option>Hoàn thành</option>
-                    <option>Hủy</option>
+                <select class="form-select" name="Status">
+                    <option value="">-- Tất cả trạng thái --</option>
+                    <option value="Chờ xác nhận" selected="@(Model.Status == "Chờ xác nhận")">Chờ xác nhận</option>
+                    <option value="Đang chế biến" selected="@(Model.Status == "Đang chế biến")">Đang chế biến</option>
+                    <option value="Đang giao" selected="@(Model.Status == "Đang giao")">Đang giao</option>
+                    <option value="Hoàn thành" selected="@(Model.Status == "Hoàn thành")">Hoàn thành</option>
+                    <option value="Hủy" selected="@(Model.Status == "Hủy")">Hủy</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="Date" value="@(Model.Date?.ToString("yyyy-MM-dd") ?? "")">
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Tìm kiếm mã đơn, tên khách...">
+                <input type="text" class="form-control" name="Search" placeholder="Tìm kiếm mã đơn, tên khách..." value="@Model.Search">
             </div>
             <div class="col-md-2">
-                <button class="btn btn-outline-primary w-100"><i class="fa fa-search"></i> Tìm</button>
+                <button type="submit" class="btn btn-outline-primary w-100"><i class="fa fa-search"></i> Tìm</button>
             </div>
         </form>
         <div class="table-responsive">
@@ -44,6 +49,7 @@
                     <tr>
                         <th>Mã đơn</th>
                         <th>Khách hàng</th>
+                        <th>Số điện thoại</th>
                         <th>Chi nhánh</th>
                         <th>Ngày đặt</th>
                         <th>Trạng thái</th>
@@ -52,29 +58,66 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>DH001</td>
-                        <td>Nguyễn Văn C</td>
-                        <td>KFC Nguyễn Trãi</td>
-                        <td>10/06/2024</td>
-                        <td><span class="badge bg-warning text-dark">Đang chế biến</span></td>
-                        <td>150,000</td>
-                        <td>
-                            <a class="btn btn-sm btn-info me-1" asp-page="Details" asp-route-id="DH001"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-sm btn-success me-1" asp-page="Pay" asp-route-id="DH001"><i class="fa fa-money-bill"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>DH002</td>
-                        <td>Trần Thị D</td>
-                        <td>KFC Lê Lợi</td>
-                        <td>10/06/2024</td>
-                        <td><span class="badge bg-success">Hoàn thành</span></td>
-                        <td>95,000</td>
-                        <td>
-                            <a class="btn btn-sm btn-info me-1" asp-page="Details" asp-route-id="DH002"><i class="fa fa-eye"></i></a>
-                        </td>
-                    </tr>
+                    @if (Model.Orders.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center text-muted">Chưa có đơn hàng nào</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var order in Model.Orders)
+                        {
+                            <tr>
+                                <td>@order.MaDonHang</td>
+                                <td>@order.TenKhachHang</td>
+                                <td>@order.SoDienThoai</td>
+                                <td>@(order.ChiNhanh?.TenChiNhanh ?? "N/A")</td>
+                                <td>@order.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    @{
+                                        var badgeClass = order.TrangThai switch
+                                        {
+                                            "Chờ xác nhận" => "bg-warning text-dark",
+                                            "Đang chế biến" => "bg-info",
+                                            "Đang giao" => "bg-primary",
+                                            "Hoàn thành" => "bg-success",
+                                            "Hủy" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass">@order.TrangThai</span>
+                                </td>
+                                <td>
+                                    @{
+                                        var total = order.ChiTietDonHangs?.Sum(ct => ct.SoLuong * ct.DonGia) ?? 0;
+                                    }
+                                    @total.ToString("N0") ₫
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-info me-1" asp-page="Details" asp-route-id="@order.MaDonHang" title="Xem chi tiết">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-warning me-1" asp-page="Edit" asp-route-id="@order.MaDonHang" title="Cập nhật trạng thái">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    @if (order.TrangThai == "Chờ xác nhận")
+                                    {
+                                        <form method="post" asp-page-handler="Confirm" asp-route-id="@order.MaDonHang" style="display:inline">
+                                            <button type="submit" class="btn btn-sm btn-success me-1" title="Xác nhận đơn hàng">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </form>
+                                        <form method="post" asp-page-handler="Cancel" asp-route-id="@order.MaDonHang" style="display:inline">
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Hủy đơn hàng">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
         </div>

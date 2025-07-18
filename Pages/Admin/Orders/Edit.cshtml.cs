@@ -3,31 +3,76 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NhaHang.Models;
 using NhaHang.Services;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace NhaHang.Pages.Orders
 {
     public class EditModel : PageModel
     {
-        private readonly OrderService _orderService;
-        public EditModel(OrderService orderService)
+        private readonly ShopService _shopService;
+        
+        public EditModel(ShopService shopService)
         {
-            _orderService = orderService;
+            _shopService = shopService;
         }
+        
         [BindProperty]
-        public DonHang Order { get; set; } = new();
+        public DonHang? Order { get; set; }
+        
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            var order = await _orderService.GetByIdAsync(id);
-            if (order == null) return NotFound();
-            Order = order;
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToPage("Index");
+            }
+            
+            Order = await _shopService.GetOrderByIdAsync(id);
+            
+            if (Order == null)
+            {
+                TempData["Error"] = "Không tìm thấy đơn hàng";
+                return RedirectToPage("Index");
+            }
+            
             return Page();
         }
+        
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid) return Page();
-            var result = await _orderService.UpdateAsync(Order);
-            if (result)
+            if (Order == null)
+            {
                 return RedirectToPage("Index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                // Ghi log lỗi chi tiết vào TempData
+                TempData["ErrorDetails"] = string.Join("; ", ModelState.Where(x => x.Value.Errors.Count > 0)
+                    .Select(x => $"{x.Key}: {string.Join(", ", x.Value.Errors.Select(e => e.ErrorMessage))}"));
+                // Reload order from DB to repopulate fields, keep selected TrangThai
+                var orderFromDb = await _shopService.GetOrderByIdAsync(Order.MaDonHang);
+                if (orderFromDb != null)
+                {
+                    orderFromDb.TrangThai = Order.TrangThai;
+                    Order = orderFromDb;
+                }
+                return Page();
+            }
+
+            var result = await _shopService.UpdateOrderAsync(Order);
+            if (result)
+            {
+                TempData["Success"] = "Cập nhật trạng thái đơn hàng thành công!";
+                return RedirectToPage("Index");
+            }
+
+            // Reload order from DB if update fails
+            var orderReload = await _shopService.GetOrderByIdAsync(Order.MaDonHang);
+            if (orderReload != null)
+            {
+                orderReload.TrangThai = Order.TrangThai;
+                Order = orderReload;
+            }
             ModelState.AddModelError(string.Empty, "Không thể cập nhật đơn hàng.");
             return Page();
         }

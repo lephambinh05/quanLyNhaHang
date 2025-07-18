@@ -53,8 +53,8 @@ namespace NhaHang.Data
                 // Seed QuanTriVien
                 var admins = new[]
                 {
-                    new QuanTriVien { MaQuanTriVien = "AD01", Email = "admin@demo.com", MatKhau = "123456", HoTen = "Admin Tổng", VaiTro = "Quản trị Tổng", MaChiNhanh = "CN01" },
-                    new QuanTriVien { MaQuanTriVien = "QL01", Email = "q1@demo.com", MatKhau = "123456", HoTen = "Nguyễn Văn A", VaiTro = "Quản trị Chi nhánh", MaChiNhanh = "CN01" }
+                    new QuanTriVien { MaQuanTriVien = "AD01", Email = "admin@demo.com", MatKhau = "123456", HoTen = "Super Admin", VaiTro = "SuperAdmin", MaChiNhanh = "CN01" },
+                    new QuanTriVien { MaQuanTriVien = "AD02", Email = "admin2@demo.com", MatKhau = "123456", HoTen = "Admin Chi nhánh", VaiTro = "Admin", MaChiNhanh = "CN01" }
                 };
                 context.QuanTriViens.AddRange(admins);
 

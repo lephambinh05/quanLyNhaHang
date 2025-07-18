@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NhaHang.Models;
 using NhaHang.Services;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NhaHang.Pages.Orders
 {
+    [Authorize(AuthenticationSchemes = "AdminCookie", Roles = "SuperAdmin,Admin")]
     public class CreateModel : PageModel
     {
         private readonly OrderService _orderService;

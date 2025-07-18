@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NhaHang.Pages.KhachHangPages
 {
-    [Authorize(Roles = "SuperAdmin,Manager")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly KhachHangService _khachHangService;

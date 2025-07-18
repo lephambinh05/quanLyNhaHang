@@ -1,0 +1,30 @@
+@page
+@model NhaHang.Pages.Auth.LoginModel
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+<div class="container py-4">
+    <h2 class="mb-4 text-center">Đăng nhập</h2>
+    @if (Model.Success)
+    {
+        <div class="alert alert-success">Đăng nhập thành công! Xin chào <b>@Model.HoTen</b>.</div>
+    }
+    else
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="Email" class="form-control" value="@Model.Email" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mật khẩu</label>
+                <input type="password" name="MatKhau" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-danger">Đăng nhập</button>
+        </form>
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger mt-3">@Model.ErrorMessage</div>
+        }
+    }
+</div> 

@@ -138,7 +138,6 @@ namespace nhaHang.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("GhiChu")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -148,17 +147,19 @@ namespace nhaHang.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MaKhachHang")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MaKhuyenMai")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime>("NgayDatHang")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("PhuongThucThanhToan")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("SoDienThoai")
                         .IsRequired()
@@ -273,12 +274,10 @@ namespace nhaHang.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("HinhAnhBanner")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("MaChiNhanh")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -288,7 +287,6 @@ namespace nhaHang.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("MoTa")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -299,12 +297,10 @@ namespace nhaHang.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NoiDungBanner")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("TieuDeBanner")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -334,22 +330,18 @@ namespace nhaHang.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("HinhAnh")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("MaChiNhanh")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MaDanhMuc")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MoTa")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -411,6 +403,38 @@ namespace nhaHang.Migrations
                     b.ToTable("QuanTriViens");
                 });
 
+            modelBuilder.Entity("NhaHang.Models.ThongTinThanhToan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApiKey")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ChuTaiKhoan")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NganHang")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SoTaiKhoan")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ThongTinThanhToans");
+                });
+
             modelBuilder.Entity("NhaHang.Models.ChiTietDonHang", b =>
                 {
                     b.HasOne("NhaHang.Models.DonHang", "DonHang")
@@ -452,14 +476,12 @@ namespace nhaHang.Migrations
                     b.HasOne("NhaHang.Models.KhachHang", "KhachHang")
                         .WithMany("DonHangs")
                         .HasForeignKey("MaKhachHang")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("NhaHang.Models.KhuyenMai", "KhuyenMai")
                         .WithMany()
                         .HasForeignKey("MaKhuyenMai")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ChiNhanh");
 
@@ -491,9 +513,7 @@ namespace nhaHang.Migrations
                 {
                     b.HasOne("NhaHang.Models.ChiNhanh", "ChiNhanh")
                         .WithMany("KhuyenMais")
-                        .HasForeignKey("MaChiNhanh")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MaChiNhanh");
 
                     b.Navigation("ChiNhanh");
                 });
@@ -502,15 +522,12 @@ namespace nhaHang.Migrations
                 {
                     b.HasOne("NhaHang.Models.ChiNhanh", "ChiNhanh")
                         .WithMany("MonAns")
-                        .HasForeignKey("MaChiNhanh")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MaChiNhanh");
 
                     b.HasOne("NhaHang.Models.DanhMuc", "DanhMuc")
                         .WithMany("MonAns")
                         .HasForeignKey("MaDanhMuc")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ChiNhanh");
 

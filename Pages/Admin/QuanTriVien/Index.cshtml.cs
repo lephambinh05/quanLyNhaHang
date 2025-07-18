@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NhaHang.Pages.Admin.QuanTriVien
 {
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(AuthenticationSchemes = "AdminCookie", Roles = "SuperAdmin")]
     public class IndexModel : PageModel
     {
         private readonly QuanTriVienService _service;

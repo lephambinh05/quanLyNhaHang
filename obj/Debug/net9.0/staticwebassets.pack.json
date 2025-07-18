@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\img\\52c32080-d10a-4916-b764-fd84fc9d8f2d.jpg"
     },
     {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\55d669ea-48bc-4aab-8e43-fdb5c278223b.jpg",
+      "PackagePath": "staticwebassets\\img\\55d669ea-48bc-4aab-8e43-fdb5c278223b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\5f0bc90a-f0ff-4b3a-a2b7-4e652baefe03.png",
+      "PackagePath": "staticwebassets\\img\\5f0bc90a-f0ff-4b3a-a2b7-4e652baefe03.png"
+    },
+    {
       "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\6c49102a-4b96-4d14-903f-0bdcbae3dfae.jpg",
       "PackagePath": "staticwebassets\\img\\6c49102a-4b96-4d14-903f-0bdcbae3dfae.jpg"
     },
@@ -73,8 +81,64 @@
       "PackagePath": "staticwebassets\\img\\bf52f739-8528-464c-86e9-ea5a9c1be6d8.jpg"
     },
     {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\24h.png",
+      "PackagePath": "staticwebassets\\img\\brand\\24h.png"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\HTV9.png",
+      "PackagePath": "staticwebassets\\img\\brand\\HTV9.png"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\Htv7.png",
+      "PackagePath": "staticwebassets\\img\\brand\\Htv7.png"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\VTC2.webp",
+      "PackagePath": "staticwebassets\\img\\brand\\VTC2.webp"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\cafeF.png",
+      "PackagePath": "staticwebassets\\img\\brand\\cafeF.png"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\dantri.jpg",
+      "PackagePath": "staticwebassets\\img\\brand\\dantri.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\kenh14.jpg",
+      "PackagePath": "staticwebassets\\img\\brand\\kenh14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\tienphong.png",
+      "PackagePath": "staticwebassets\\img\\brand\\tienphong.png"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\brand\\vnexpress.jpg",
+      "PackagePath": "staticwebassets\\img\\brand\\vnexpress.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\customer\\leminhphuong.jpg",
+      "PackagePath": "staticwebassets\\img\\customer\\leminhphuong.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\customer\\nguyenthimai.jpg",
+      "PackagePath": "staticwebassets\\img\\customer\\nguyenthimai.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\customer\\phamthilan.webp",
+      "PackagePath": "staticwebassets\\img\\customer\\phamthilan.webp"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\customer\\trangvanhung.webp",
+      "PackagePath": "staticwebassets\\img\\customer\\trangvanhung.webp"
+    },
+    {
       "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\d18c5c57-91f2-465e-a847-afe030212a60.jpg",
       "PackagePath": "staticwebassets\\img\\d18c5c57-91f2-465e-a847-afe030212a60.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\df0dec76-92fd-4412-8323-43cb6b608fa4.jpg",
+      "PackagePath": "staticwebassets\\img\\df0dec76-92fd-4412-8323-43cb6b608fa4.jpg"
     },
     {
       "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\e54ae350-2458-47a1-b892-02a4318ac352.jpg",
@@ -83,6 +147,18 @@
     {
       "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\fe369de6-f56d-4e51-812e-66f27f2c3a02.jpg",
       "PackagePath": "staticwebassets\\img\\fe369de6-f56d-4e51-812e-66f27f2c3a02.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\food-preview\\png1.jpg",
+      "PackagePath": "staticwebassets\\img\\food-preview\\png1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\food-preview\\png2.jpg",
+      "PackagePath": "staticwebassets\\img\\food-preview\\png2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\img\\food-preview\\png3.jpg",
+      "PackagePath": "staticwebassets\\img\\food-preview\\png3.jpg"
     },
     {
       "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\js\\site.js",

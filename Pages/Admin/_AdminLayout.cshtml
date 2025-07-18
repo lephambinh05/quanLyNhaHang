@@ -72,6 +72,7 @@
         <nav class="nav flex-column mb-4">
             <span class="text-uppercase small fw-bold ms-2 mb-1">Dashboard</span>
             <a class="nav-link @(Context.Request.Path == "/Admin/Dashboard" ? "active" : "")" asp-page="/Admin/Dashboard/Index"><i class="fa-solid fa-gauge me-2"></i>Dashboard</a>
+            <a class="nav-link @(Context.Request.Path == "/Admin/Orders/Index" ? "active" : "")" asp-page="/Admin/Orders/Index"><i class="fa fa-receipt me-2"></i>Đơn hàng</a>
             <span class="text-uppercase small fw-bold ms-2 mt-3 mb-1">Quản lý</span>
             <a class="nav-link" asp-page="/Admin/Branches/Index"><i class="fa-solid fa-store me-2"></i>Chi nhánh</a>
             <a class="nav-link" asp-page="/Admin/Menu/Index"><i class="fa-solid fa-burger me-2"></i>Thực đơn</a>
@@ -83,7 +84,7 @@
             <a class="nav-link" asp-page="/Admin/QuanTriVien/Index"><i class="fa-solid fa-users-cog me-2"></i>Quản trị viên</a>
             <a class="nav-link" asp-page="/Admin/DanhMuc/Index"><i class="fa-solid fa-tags me-2"></i>Danh mục</a>
             <hr class="my-3">
-            <a href="#" class="nav-link" id="logoutBtn"><i class="fa-solid fa-right-from-bracket me-2"></i>Đăng xuất</a>
+            <a href="/Admin/Logout" class="nav-link" id="logoutBtn"><i class="fa-solid fa-right-from-bracket me-2"></i>Đăng xuất</a>
         </nav>
     </div>
     <div class="main-content" id="mainContent">
@@ -99,7 +100,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" asp-page="/Admin/Profile"><i class="fa fa-user me-2"></i>Thông tin cá nhân</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#" id="logoutBtnDropdown"><i class="fa fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                        <li><a class="dropdown-item" href="/Admin/Logout"><i class="fa fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>

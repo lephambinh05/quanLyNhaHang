@@ -4,16 +4,6 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="alert alert-info mb-3">
-    <strong>Debug Claims:</strong>
-    <ul>
-    @foreach (var claim in User.Claims)
-    {
-        <li>@claim.Type: <b>@claim.Value</b></li>
-    }
-    </ul>
-</div>
-
 <div class="row">
     <div class="col-md-3 mb-4">
         <div class="card bg-primary text-white">

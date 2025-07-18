@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NhaHang.Pages.DanhMucPages
 {
-    [Authorize(Roles = "SuperAdmin,Manager")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly DanhMucService _danhMucService;

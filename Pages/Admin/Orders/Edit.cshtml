@@ -1,50 +1,97 @@
 @page
-@model dynamic
+@model NhaHang.Pages.Orders.EditModel
 @{
-    ViewData["Title"] = "Sửa đơn hàng";
+    ViewData["Title"] = "Cập nhật trạng thái đơn hàng";
 }
-<div class="col-lg-8 mx-auto">
-    <div class="card shadow-sm border-0 mt-4">
-        <div class="card-header bg-white fw-bold">Sửa đơn hàng</div>
-        <div class="card-body">
-            <form>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Tên khách hàng</label>
-                        <input type="text" class="form-control" value="Nguyễn Văn C" required />
+@if (Model.Order == null)
+{
+    <div class="alert alert-danger">Không tìm thấy đơn hàng</div>
+    <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+}
+else
+{
+    @if (TempData["ErrorDetails"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorDetails"]</div>
+    }
+    @if (Model.Order != null)
+    {
+        <div class="alert alert-info">
+            MaDonHang: @Model.Order.MaDonHang <br />
+            TrangThai: @Model.Order.TrangThai <br />
+            MaChiNhanh: @Model.Order.MaChiNhanh <br />
+            SoDienThoai: @Model.Order.SoDienThoai <br />
+            TenKhachHang: @Model.Order.TenKhachHang <br />
+            DiaChiGiaoHang: @Model.Order.DiaChiGiaoHang <br />
+        </div>
+    }
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm border-0 mt-4">
+            <div class="card-header bg-white fw-bold">Cập nhật trạng thái đơn hàng</div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Mã đơn hàng</label>
+                            <input type="text" class="form-control" value="@Model.Order.MaDonHang" readonly />
+                            <input type="hidden" asp-for="Order.MaDonHang" />
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Order.TenKhachHang" class="form-label"></label>
+                            <input asp-for="Order.TenKhachHang" class="form-control" />
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" value="0901234567" />
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="Order.SoDienThoai" class="form-label"></label>
+                            <input asp-for="Order.SoDienThoai" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ngày đặt</label>
+                            <input type="text" class="form-control" value="@Model.Order.NgayDatHang.ToString("dd/MM/yyyy HH:mm")" readonly />
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Chi nhánh</label>
-                    <select class="form-select" required>
-                        <option selected>KFC Nguyễn Trãi</option>
-                        <option>KFC Lê Lợi</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Địa chỉ giao hàng</label>
-                    <input type="text" class="form-control" value="123 Nguyễn Trãi, Q.1" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Chọn món</label>
-                    <select class="form-select" multiple required>
-                        <option selected>Gà rán giòn cay</option>
-                        <option>Burger gà</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Ghi chú</label>
-                    <input type="text" class="form-control" value="Không hành" />
-                </div>
-                <div class="text-end">
-                    <a asp-page="Index" class="btn btn-secondary me-2">Hủy</a>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                </div>
-            </form>
+                    <div class="mb-3">
+                        <label asp-for="Order.DiaChiGiaoHang" class="form-label"></label>
+                        <input asp-for="Order.DiaChiGiaoHang" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Order.MaChiNhanh" class="form-label"></label>
+                        <input asp-for="Order.MaChiNhanh" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Order.GhiChu" class="form-label"></label>
+                        <input asp-for="Order.GhiChu" class="form-control" />
+                    </div>
+                    @if (Model.Order?.ChiTietDonHangs != null && Model.Order.ChiTietDonHangs.Count > 0)
+                    {
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tổng tiền</label>
+                            <input type="text" class="form-control" value="@Model.Order.ChiTietDonHangs.Sum(ct => ct.SoLuong * ct.DonGia).ToString("N0") + " ₫" readonly />
+                        </div>
+                    }
+                    <div class="mb-3">
+                        <label asp-for="Order.TrangThai" class="form-label">Trạng thái đơn hàng *</label>
+                        <select asp-for="Order.TrangThai" class="form-select" required>
+                            <option value="Chờ xác nhận">Chờ xác nhận</option>
+                            <option value="Đang chế biến">Đang chế biến</option>
+                            <option value="Đang giao">Đang giao</option>
+                            <option value="Hoàn thành">Hoàn thành</option>
+                            <option value="Hủy">Hủy</option>
+                        </select>
+                        <span asp-validation-for="Order.TrangThai" class="text-danger"></span>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="text-end">
+                        <a asp-page="Index" class="btn btn-secondary me-2">
+                            <i class="fa fa-arrow-left me-1"></i>Hủy
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-save me-1"></i>Cập nhật
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div> 
+} 

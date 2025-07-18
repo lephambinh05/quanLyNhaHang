@@ -1,0 +1,106 @@
+@page "{id}"
+@model nhaHang.Pages.DonHangCuaToi.DetailsModel
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+<div class="container py-4">
+    <div class="d-flex align-items-center mb-4">
+        <i class="fa-solid fa-file-invoice fa-2x me-3 text-primary"></i>
+        <div>
+            <h2 class="mb-0 fw-bold" style="color:#3a4668;">Chi tiết đơn hàng</h2>
+            <div class="text-muted small">Thông tin chi tiết về đơn hàng của bạn</div>
+        </div>
+    </div>
+    @if (Model.DonHang == null)
+    {
+        <div class="text-center py-5">
+            <img src="/img/brand/empty-order.png" alt="No order" class="empty-order-img" onerror="this.style.display='none'" />
+            <p class="text-muted fs-5">Không tìm thấy đơn hàng.<br>Vui lòng kiểm tra lại mã đơn hoặc liên hệ hỗ trợ.</p>
+            <a href="/DonHangCuaToi" class="btn btn-outline-primary mt-2">Quay lại lịch sử đơn hàng</a>
+        </div>
+    }
+    else
+    {
+        <div class="row mb-4">
+            <div class="col-lg-7">
+                <div class="card shadow-sm border-0 order-card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold">Mã đơn: <span class="text-primary">@Model.DonHang.MaDonHang</span></span>
+                            <span class="badge @GetStatusBadgeClass(Model.DonHang.TrangThai)">@Model.DonHang.TrangThai</span>
+                        </div>
+                        <div class="mb-2 text-muted small">
+                            <i class="fa-regular fa-calendar me-1"></i> @Model.DonHang.NgayDatHang.ToString("dd/MM/yyyy HH:mm")
+                        </div>
+                        <div class="mb-2">
+                            <strong>Địa chỉ giao hàng:</strong> @Model.DonHang.DiaChiGiaoHang
+                        </div>
+                        <div class="mb-2">
+                            <strong>Ghi chú:</strong> @Model.DonHang.GhiChu
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow-sm border-0 order-card">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3" style="color:#3a4668;">Danh sách món ăn</h5>
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0 order-details-table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Tên món</th>
+                                        <th class="text-center">Số lượng</th>
+                                        <th class="text-end">Đơn giá</th>
+                                        <th class="text-end">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var ct in Model.DonHang.ChiTietDonHangs)
+                                {
+                                    <tr>
+                                        <td>@ct.MonAn?.TenMonAn</td>
+                                        <td class="text-center">@ct.SoLuong</td>
+                                        <td class="text-end">@ct.DonGia.ToString("N0") đ</td>
+                                        <td class="text-end">@((ct.SoLuong * ct.DonGia).ToString("N0")) đ</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card shadow-sm border-0 order-summary-card mb-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3" style="color:#3a4668;">Tóm tắt đơn hàng</h5>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tổng số món:</span>
+                            <span class="fw-bold">@Model.DonHang.ChiTietDonHangs.Sum(x => x.SoLuong)</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tổng tiền hàng:</span>
+                            <span class="fw-bold">@Model.DonHang.ChiTietDonHangs.Sum(x => x.SoLuong * x.DonGia).ToString("N0") đ</span>
+                        </div>
+                        @* Khuyến mãi và thành tiền sẽ được xử lý ở bước tiếp theo nếu có thuộc tính *@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/DonHangCuaToi" class="btn btn-outline-secondary mt-3"><i class="fa fa-arrow-left me-1"></i> Quay lại lịch sử đơn hàng</a>
+    }
+</div>
+
+@functions {
+    private string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Chờ xác nhận" => "bg-warning text-dark",
+            "Đã xác nhận" => "bg-info text-white",
+            "Đang giao" => "bg-primary text-white",
+            "Đã giao" => "bg-success text-white",
+            "Đã huỷ" => "bg-danger text-white",
+            _ => "bg-secondary text-white"
+        };
+    }
+} 

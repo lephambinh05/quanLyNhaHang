@@ -4,83 +4,73 @@
     ViewData["Title"] = "NhaHangChain - Đặt hàng trực tuyến";
 }
 
-<div class="container-fluid">
-    <!-- Hero Section -->
-    <div class="row bg-danger text-white py-5 mb-4">
-        <div class="col-md-8 mx-auto text-center">
-            <h1 class="display-4 fw-bold mb-3">
-                <i class="fa-solid fa-drumstick-bite me-3"></i>
-                NhaHangChain
-            </h1>
-            <p class="lead mb-4">Đặt món ngon, giao hàng nhanh - Hệ thống chuỗi nhà hàng hàng đầu</p>
-            <a href="#menu" class="btn btn-light btn-lg px-4">Xem thực đơn ngay</a>
+<div class="container-fluid py-5" style="background: none;">
+    <!-- Hero Section with Image -->
+    <div class="row justify-content-center align-items-center mb-5 flex-lg-row flex-column-reverse">
+        <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0 d-flex flex-column justify-content-center">
+            <h1 class="display-4 fw-bold mb-3" style="color:#3a4668; letter-spacing:1px;">Khám phá ẩm thực tuyệt vời cùng <span style="color:#6a93cb;">NhaHangChain</span></h1>
+            <p class="lead mb-4" style="color:#4b6cb7;">Đặt món ngon, nhận ưu đãi hấp dẫn và trải nghiệm dịch vụ chuyên nghiệp tại chuỗi nhà hàng hàng đầu Việt Nam.</p>
+            <div class="mb-3">
+                <a href="/Menu" class="btn btn-primary btn-lg px-4 me-3">Xem thực đơn</a>
+                <a href="/Shop/Create" class="btn btn-outline-primary btn-lg px-4">Đặt hàng ngay</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center mb-4 mb-lg-0">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1500" style="max-height:340px;">
+                <div class="carousel-inner rounded shadow">
+                    <div class="carousel-item active">
+                        <img src="/img/food-preview/png1.jpg" class="d-block w-100" style="object-fit:cover; max-height:340px;" alt="Món ăn 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/food-preview/png2.jpg" class="d-block w-100" style="object-fit:cover; max-height:340px;" alt="Món ăn 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/img/food-preview/png3.jpg" class="d-block w-100" style="object-fit:cover; max-height:340px;" alt="Món ăn 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Features Section -->
-    <div class="row mb-5">
-        <div class="col-md-4 text-center mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+    <div class="row mb-5 g-4">
+        <div class="col-md-4 text-center">
+            <div class="card h-100 border-0 shadow-sm p-4 feature-card">
+                <div class="feature-icon mb-3">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
                 <div class="card-body">
-                    <i class="fa-solid fa-utensils fa-3x text-danger mb-3"></i>
                     <h5 class="card-title">Thực đơn đa dạng</h5>
-                    <p class="card-text">Hơn 100 món ăn ngon từ các món truyền thống đến hiện đại</p>
+                    <p class="card-text">Hơn 100 món ăn ngon từ các món truyền thống đến hiện đại.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 text-center mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-md-4 text-center">
+            <div class="card h-100 border-0 shadow-sm p-4 feature-card">
+                <div class="feature-icon mb-3">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
                 <div class="card-body">
-                    <i class="fa-solid fa-clock fa-3x text-warning mb-3"></i>
                     <h5 class="card-title">Giao hàng nhanh</h5>
-                    <p class="card-text">Giao hàng trong 30 phút với đơn hàng trong bán kính 5km</p>
+                    <p class="card-text">Giao hàng trong 30 phút với đơn hàng trong bán kính 5km.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 text-center mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-md-4 text-center">
+            <div class="card h-100 border-0 shadow-sm p-4 feature-card">
+                <div class="feature-icon mb-3">
+                    <i class="fa-solid fa-tags"></i>
+                </div>
                 <div class="card-body">
-                    <i class="fa-solid fa-gift fa-3x text-success mb-3"></i>
                     <h5 class="card-title">Khuyến mãi hấp dẫn</h5>
-                    <p class="card-text">Giảm giá lên đến 50% cho khách hàng thân thiết</p>
+                    <p class="card-text">Giảm giá lên đến 50% cho khách hàng thân thiết.</p>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Menu Section -->
-    <div id="menu" class="row mb-5">
-        <div class="col-12">
-            <h2 class="text-center mb-4">Thực đơn nổi bật</h2>
-            <div class="row">
-                @if (Model.FeaturedDishes.Any())
-                {
-                    @foreach (var dish in Model.FeaturedDishes.Take(6))
-                    {
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 border-0 shadow-sm">
-                                @if (!string.IsNullOrEmpty(dish.HinhAnh))
-                                {
-                                    <img src="/img/@dish.HinhAnh" class="card-img-top" alt="@dish.TenMonAn" style="height: 200px; object-fit: cover;">
-                                }
-                                <div class="card-body">
-                                    <h5 class="card-title">@dish.TenMonAn</h5>
-                                    <p class="card-text text-muted">@dish.MoTa</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="h5 text-danger mb-0">@dish.Gia.ToString("N0") VNĐ</span>
-                                        <a href="/Shop/Create" class="btn btn-outline-danger btn-sm">Đặt ngay</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <div class="col-12 text-center">
-                        <p class="text-muted">Đang tải thực đơn...</p>
-                    </div>
-                }
             </div>
         </div>
     </div>
@@ -88,21 +78,24 @@
     <!-- Promotions Section -->
     <div class="row mb-5">
         <div class="col-12">
-            <h2 class="text-center mb-4">Khuyến mãi đang chạy</h2>
-            <div class="row">
+            <h2 class="text-center mb-4" style="color:#3a4668;">Khuyến mãi đang chạy</h2>
+            <div class="row g-4">
                 @if (Model.ActivePromotions.Any())
                 {
                     @foreach (var promo in Model.ActivePromotions.Take(3))
                     {
                         <div class="col-md-4 mb-4">
-                            <div class="card border-0 shadow-sm bg-gradient text-white" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">@promo.MaGiamGia</h5>
-                                    <p class="card-text">@promo.MoTa</p>
-                                    <div class="mb-3">
+                            <div class="promotion-card-new border-0 shadow-sm p-4 d-flex flex-column align-items-center">
+                                <div class="promotion-icon mb-3">
+                                    <i class="fa-solid fa-ticket fa-2x"></i>
+                                </div>
+                                <div class="card-body text-center p-0">
+                                    <h5 class="promo-title">@promo.MaGiamGia</h5>
+                                    <div class="mb-2">
                                         <span class="badge bg-light text-dark">Giảm @promo.TyLeGiam%</span>
                                     </div>
-                                    <a href="/Shop/Create" class="btn btn-light">Áp dụng ngay</a>
+                                    <p class="promo-desc">@promo.MoTa</p>
+                                    <a href="/Shop/Create" class="btn btn-primary mt-2">Áp dụng ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -118,17 +111,204 @@
         </div>
     </div>
 
-    <!-- CTA Section -->
-    <div class="row bg-light py-5 rounded">
-        <div class="col-md-8 mx-auto text-center">
-            <h3 class="mb-3">Sẵn sàng đặt hàng?</h3>
-            <p class="lead mb-4">Khám phá thực đơn đầy đủ và đặt món ngay bây giờ!</p>
-            <a href="/Shop/Create" class="btn btn-danger btn-lg px-4 me-3">
-                <i class="fa-solid fa-shopping-cart me-2"></i>Đặt hàng ngay
-            </a>
-            <a href="/Menu" class="btn btn-outline-danger btn-lg px-4">
-                <i class="fa-solid fa-burger me-2"></i>Xem thực đơn
-            </a>
+    <!-- Customer Reviews Section -->
+    <div class="row my-5 justify-content-center">
+        <div class="col-12 text-center mb-4">
+            <h2 style="color:#3a4668;">ĐÁNH GIÁ DỊCH VỤ CỦA NHAHANGCHAIN TỪ KHÁCH HÀNG</h2>
+        </div>
+        
+        <!-- Review Platforms -->
+        <div class="col-12 mb-5">
+            <div class="row justify-content-center g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="review-platform-card text-center p-4">
+                        <div class="stars mb-2">
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star text-success"></i>
+                        </div>
+                        <h6 class="fw-bold mb-1">Trustpilot</h6>
+                        <p class="text-muted mb-0">Đánh giá: 4.9/5 | 9 Reviews</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="review-platform-card text-center p-4">
+                        <div class="stars mb-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                        </div>
+                        <h6 class="fw-bold mb-1">Google</h6>
+                        <p class="text-muted mb-0">Đánh giá: 4.7/5 | 125 Reviews</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="review-platform-card text-center p-4">
+                        <div class="stars mb-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                        </div>
+                        <h6 class="fw-bold mb-1">Foody</h6>
+                        <p class="text-muted mb-0">Đánh giá: 5/5 | 24 Reviews</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="review-platform-card text-center p-4">
+                        <div class="stars mb-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                        </div>
+                        <h6 class="fw-bold mb-1">Facebook</h6>
+                        <p class="text-muted mb-0">Đánh giá: 4.8/5 | 62 Reviews</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Testimonials -->
+        <div class="col-12">
+            <div class="testimonials-grid">
+                <div class="testimonial-card-rectangle">
+                    <div class="testimonial-header-rectangle">
+                        <img src="/img/customer/nguyenthimai.jpg" alt="Nguyễn Thị Mai" class="testimonial-avatar-rectangle">
+                        <div class="testimonial-user-info-rectangle">
+                            <h6 class="fw-bold mb-1">Nguyễn Thị Mai</h6>
+                            <p class="text-muted small mb-2">Khách hàng thân thiết</p>
+                            <div class="stars">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text-rectangle">"Tôi đã ăn ở NhaHangChain hơn 2 năm nay. Món ăn luôn tươi ngon, giao hàng nhanh chóng và nhân viên rất thân thiện. Đặc biệt là món phở bò và cơm tấm rất ngon!"</p>
+                </div>
+                
+                <div class="testimonial-card-rectangle">
+                    <div class="testimonial-header-rectangle">
+                        <img src="/img/customer/trangvanhung.webp" alt="Trần Văn Hùng" class="testimonial-avatar-rectangle">
+                        <div class="testimonial-user-info-rectangle">
+                            <h6 class="fw-bold mb-1">Trần Văn Hùng</h6>
+                            <p class="text-muted small mb-2">Đối tác cung cấp thực phẩm</p>
+                            <div class="stars">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text-rectangle">"Là đối tác cung cấp thực phẩm cho NhaHangChain, tôi rất hài lòng với sự chuyên nghiệp và uy tín của họ. Họ luôn đảm bảo chất lượng và thanh toán đúng hạn."</p>
+                </div>
+                
+                <div class="testimonial-card-rectangle">
+                    <div class="testimonial-header-rectangle">
+                        <img src="/img/customer/leminhphuong.jpg" alt="Lê Minh Phương" class="testimonial-avatar-rectangle">
+                        <div class="testimonial-user-info-rectangle">
+                            <h6 class="fw-bold mb-1">Lê Minh Phương</h6>
+                            <p class="text-muted small mb-2">Khách hàng VIP</p>
+                            <div class="stars">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text-rectangle">"NhaHangChain là nhà hàng yêu thích của gia đình tôi. Thực đơn đa dạng, giá cả hợp lý và dịch vụ giao hàng rất nhanh. Đặc biệt là các món hải sản rất tươi ngon!"</p>
+                </div>
+                
+                <div class="testimonial-card-rectangle">
+                    <div class="testimonial-header-rectangle">
+                        <img src="/img/customer/phamthilan.webp" alt="Phạm Thị Lan" class="testimonial-avatar-rectangle">
+                        <div class="testimonial-user-info-rectangle">
+                            <h6 class="fw-bold mb-1">Phạm Thị Lan</h6>
+                            <p class="text-muted small mb-2">Khách hàng thường xuyên</p>
+                            <div class="stars">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text-rectangle">"Tôi đặt hàng ở đây ít nhất 3 lần/tuần. Món ăn luôn nóng hổi, đóng gói cẩn thận và giao hàng đúng giờ. Nhân viên rất dễ thương và nhiệt tình!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Media Mentions Section -->
+    <div class="row my-5 justify-content-center">
+        <div class="col-12 text-center mb-4">
+            <h2 style="color:#3a4668;">NHAHANGCHAIN TRÊN BÁO CHÍ VÀ TRUYỀN HÌNH</h2>
+            <p class="text-muted">NhaHangChain đã xuất hiện trên nhiều trang báo uy tín và được đài truyền hình đưa tin</p>
+        </div>
+        <div class="col-12">
+            <div class="media-grid">
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/VTC2.webp" alt="VTC 2" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/24h.png" alt="24h" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/vnexpress.jpg" alt="VNEXPRESS" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/Htv7.png" alt="HTV7" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/HTV9.png" alt="HTV9" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/dantri.jpg" alt="DÂN TRÍ" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/kenh14.jpg" alt="KENH 14" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/tienphong.png" alt="Tienphong" class="brand-logo">
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo-card">
+                        <img src="/img/brand/cafeF.png" alt="CAFEF" class="brand-logo">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

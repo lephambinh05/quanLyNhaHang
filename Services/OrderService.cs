@@ -21,7 +21,12 @@ namespace NhaHang.Services
 
         public async Task<DonHang?> GetByIdAsync(string id)
         {
-            return await _context.DonHangs.Include(d => d.ChiNhanh).Include(d => d.KhachHang).FirstOrDefaultAsync(d => d.MaDonHang == id);
+            return await _context.DonHangs
+                .Include(d => d.ChiNhanh)
+                .Include(d => d.KhachHang)
+                .Include(d => d.ChiTietDonHangs)
+                .ThenInclude(ct => ct.MonAn)
+                .FirstOrDefaultAsync(d => d.MaDonHang == id);
         }
 
         public async Task<bool> CreateAsync(DonHang order)
@@ -42,6 +47,16 @@ namespace NhaHang.Services
             if (order == null) return false;
             _context.DonHangs.Remove(order);
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<List<DonHang>> GetByKhachHangIdAsync(string maKhachHang)
+        {
+            return await _context.DonHangs
+                .Include(d => d.ChiNhanh)
+                .Include(d => d.KhachHang)
+                .Where(d => d.MaKhachHang == maKhachHang)
+                .OrderByDescending(d => d.NgayDatHang)
+                .ToListAsync();
         }
     }
 } 

@@ -11,7 +11,7 @@ using System;
 
 namespace NhaHang.Pages.DanhMucPages
 {
-    [Authorize(Roles = "SuperAdmin,Manager")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class CreateModel : PageModel
     {
         private readonly DanhMucService _danhMucService;

@@ -9,8 +9,27 @@ namespace NhaHang.Pages.Admin
     {
         public async Task<IActionResult> OnPostAsync()
         {
+            // Xóa toàn bộ session
+            HttpContext.Session.Clear();
+            // Xóa toàn bộ cookie
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
             await HttpContext.SignOutAsync("AdminCookie");
-            return new JsonResult(new { success = true });
+            return RedirectToPage("/Admin/Login");
+        }
+        public async Task<IActionResult> OnGetAsync()
+        {
+            // Xóa toàn bộ session
+            HttpContext.Session.Clear();
+            // Xóa toàn bộ cookie
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+            await HttpContext.SignOutAsync("AdminCookie");
+            return RedirectToPage("/Admin/Login");
         }
     }
 } 

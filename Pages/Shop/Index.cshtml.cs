@@ -1,26 +1,22 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NhaHang.Models;
 using NhaHang.Services;
 using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace NhaHang.Pages.Shop
 {
-    [Authorize(Roles = "Customer")]
     public class IndexModel : PageModel
     {
-        private readonly ShopService _shopService;
-        public IndexModel(ShopService shopService)
+        private readonly BranchService _branchService;
+        public IndexModel(BranchService branchService)
         {
-            _shopService = shopService;
+            _branchService = branchService;
         }
-        public List<DonHang> Orders { get; set; } = new();
+        public List<ChiNhanh> ChiNhanhs { get; set; } = new();
         public async Task OnGetAsync()
         {
-            var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Orders = await _shopService.GetAllOrdersAsync(customerId);
+            ChiNhanhs = await _branchService.GetAllAsync();
         }
     }
 } 

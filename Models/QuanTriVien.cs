@@ -27,9 +27,12 @@ namespace NhaHang.Models
         [StringLength(100)]
         public string HoTen { get; set; }
 
+        /// <summary>
+        /// Vai trò: SuperAdmin hoặc Admin
+        /// </summary>
         [Required]
         [StringLength(50)]
-        public string VaiTro { get; set; }
+        public string VaiTro { get; set; } // SuperAdmin | Admin
 
         [StringLength(10)]
         public string MaChiNhanh { get; set; }

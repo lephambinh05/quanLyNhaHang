@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NhaHang.Pages.Admin.Dashboard
 {
-    [Authorize(Roles = "SuperAdmin,Manager")]
+    [Authorize(AuthenticationSchemes = "AdminCookie", Roles = "SuperAdmin,Admin")]
     public class DashboardModel : PageModel
     {
         private readonly BranchService _branchService;

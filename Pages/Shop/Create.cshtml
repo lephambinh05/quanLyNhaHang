@@ -1,0 +1,174 @@
+@page
+@model NhaHang.Pages.Shop.CreateModel
+@{
+    ViewData["Title"] = "Đặt đơn";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa fa-check-circle me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fa fa-exclamation-circle me-2"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <!-- Giỏ hàng và thông tin đặt hàng -->
+        <div class="col-md-6 col-lg-5">
+            <!-- Giỏ hàng -->
+            <div class="card shadow-sm mb-3">
+                <div class="card-header bg-success text-white">
+                    <h6 class="mb-0"><i class="fa fa-shopping-cart me-2"></i>Giỏ hàng (@Model.CartItems.Count)</h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.CartItems.Count == 0)
+                    {
+                        <p class="text-muted text-center">Giỏ hàng trống</p>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model.CartItems)
+                        {
+                            <div class="d-flex justify-content-between align-items-center mb-2 p-2 border rounded">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">@item.TenMonAn</h6>
+                                    <small class="text-muted">@item.DonGia.ToString("N0") ₫</small>
+                                    @if (item.MucCay > 0)
+                                    {
+                                        <span class="badge bg-danger ms-1">Cay @item.MucCay</span>
+                                    }
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <form method="post" class="d-flex align-items-center me-2">
+                                        <input type="hidden" name="maMonAn" value="@item.MaMonAn" />
+                                        <input type="number" name="soLuong" value="@item.SoLuong" min="1" max="10" 
+                                               class="form-control form-control-sm" style="width: 60px;" 
+                                               onchange="this.form.submit()" />
+                                        <input type="hidden" name="handler" value="UpdateQuantity" />
+                                    </form>
+                                    <form method="post" class="ms-1">
+                                        <button type="submit" asp-page-handler="RemoveFromCart" asp-route-maMonAn="@item.MaMonAn" 
+                                                class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <strong>Tổng cộng:</strong>
+                            <strong class="text-primary">@Model.CartItems.Sum(i => i.ThanhTien).ToString("N0") ₫</strong>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Form đặt hàng riêng biệt, chỉ submit khi bấm Đặt hàng -->
+            @if (Model.CartItems.Count > 0)
+            {
+                <div class="card shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h6 class="mb-0"><i class="fa fa-info-circle me-2"></i>Thông tin đặt hàng</h6>
+                    </div>
+                    <div class="card-body">
+                        @if (Model.ShowOrderFormErrors && !ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                <h6><i class="fa fa-exclamation-triangle me-2"></i>Có lỗi xảy ra:</h6>
+                                <ul class="mb-0">
+                                    @foreach (var modelState in ViewData.ModelState.Values)
+                                    {
+                                        foreach (var error in modelState.Errors)
+                                        {
+                                            <li>@error.ErrorMessage</li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+                        
+                        <form method="post">
+                            <div class="mb-3">
+                                <label asp-for="Order.TenKhachHang" class="form-label">Họ tên *</label>
+                                <input asp-for="Order.TenKhachHang" class="form-control" required />
+                                <span asp-validation-for="Order.TenKhachHang" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Order.SoDienThoai" class="form-label">Số điện thoại *</label>
+                                <input asp-for="Order.SoDienThoai" class="form-control" required />
+                                <span asp-validation-for="Order.SoDienThoai" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Order.DiaChiGiaoHang" class="form-label">Địa chỉ giao hàng *</label>
+                                <textarea asp-for="Order.DiaChiGiaoHang" class="form-control" rows="3" required></textarea>
+                                <span asp-validation-for="Order.DiaChiGiaoHang" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Order.MaChiNhanh" class="form-label">Chi nhánh *</label>
+                                <select asp-for="Order.MaChiNhanh" class="form-select" required>
+                                    <option value="">Chọn chi nhánh</option>
+                                    @foreach (var branch in Model.Branches)
+                                    {
+                                        <option value="@branch.MaChiNhanh">@branch.TenChiNhanh - @branch.DiaChi</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="Order.MaChiNhanh" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Order.GhiChu" class="form-label">Ghi chú</label>
+                                <textarea asp-for="Order.GhiChu" class="form-control" rows="2" placeholder="Ghi chú đặc biệt..."></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Phương thức thanh toán *</label>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Order.PhuongThucThanhToan" id="pttt-tienmat" value="TienMat" checked="@(Model.Order.PhuongThucThanhToan == "TienMat" ? "checked" : null)" required />
+                                        <label class="form-check-label" for="pttt-tienmat">Thanh toán tiền mặt</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Order.PhuongThucThanhToan" id="pttt-chuyenkhoan" value="ChuyenKhoan" checked="@(Model.Order.PhuongThucThanhToan == "ChuyenKhoan" ? "checked" : null)" required />
+                                        <label class="form-check-label" for="pttt-chuyenkhoan">Chuyển khoản ngân hàng</label>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Order.PhuongThucThanhToan" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fa fa-check me-2"></i>Đặt hàng
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Auto-submit form khi thay đổi số lượng
+        document.addEventListener('DOMContentLoaded', function() {
+            const quantityInputs = document.querySelectorAll('input[name="soLuong"]');
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    this.form.submit();
+                });
+            });
+        });
+    </script>
+} 

@@ -1,0 +1,84 @@
+@page
+@model nhaHang.Pages.DonHangCuaToi.DonHangCuaToiModel
+@{
+    ViewData["Title"] = "Đơn hàng của tôi";
+}
+<div class="container py-4">
+    <div class="d-flex align-items-center mb-4">
+        <i class="fa-solid fa-box-archive fa-2x me-3 text-primary"></i>
+        <div>
+            <h2 class="mb-0 fw-bold" style="color:#3a4668;">Lịch sử đơn hàng</h2>
+            <div class="text-muted small">Xem lại các đơn hàng bạn đã đặt tại NhaHangChain</div>
+        </div>
+    </div>
+    @if (Model.DonHangs != null && Model.DonHangs.Any())
+    {
+        <form method="get" class="mb-4">
+            <div class="row g-2 align-items-center">
+                <div class="col-auto">
+                    <label class="fw-semibold">Lọc theo trạng thái:</label>
+                </div>
+                <div class="col-auto">
+                    <select name="trangThai" class="form-select form-select-sm" style="min-width:160px;" onchange="this.form.submit()">
+                        <option value="">Tất cả</option>
+                        <option value="Chờ xác nhận" selected="@(Model.TrangThaiLoc == "Chờ xác nhận" ? "selected" : null)">Chờ xác nhận</option>
+                        <option value="Đã xác nhận" selected="@(Model.TrangThaiLoc == "Đã xác nhận" ? "selected" : null)">Đã xác nhận</option>
+                        <option value="Đang giao" selected="@(Model.TrangThaiLoc == "Đang giao" ? "selected" : null)">Đang giao</option>
+                        <option value="Đã giao" selected="@(Model.TrangThaiLoc == "Đã giao" ? "selected" : null)">Đã giao</option>
+                        <option value="Đã huỷ" selected="@(Model.TrangThaiLoc == "Đã huỷ" ? "selected" : null)">Đã huỷ</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="row g-4">
+            @foreach (var don in Model.DonHangs)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-0 order-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold">Mã đơn: <span class="text-primary">@don.MaDonHang</span></span>
+                                <span class="badge @GetStatusBadgeClass(don.TrangThai)">@don.TrangThai</span>
+                            </div>
+                            <div class="mb-2 text-muted small">
+                                <i class="fa-regular fa-calendar me-1"></i> @don.NgayDatHang.ToString("dd/MM/yyyy HH:mm")
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <a asp-page="/DonHangCuaToi/Details" asp-route-id="@don.MaDonHang" class="btn btn-sm btn-outline-primary px-3">Xem chi tiết</a>
+                                @if (don.TrangThai == "Chờ xác nhận")
+                                {
+                                    <form method="post" asp-page-handler="Huy" asp-route-id="@don.MaDonHang" style="display:inline" onsubmit="return confirm('Bạn chắc chắn muốn huỷ đơn này?');">
+                                        <button type="submit" class="btn btn-sm btn-danger px-3">Huỷ</button>
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <img src="/img/brand/empty-order.png" alt="No orders" class="empty-order-img" onerror="this.style.display='none'" />
+            <p class="text-muted fs-5">Bạn chưa có đơn hàng nào.<br>Hãy đặt món ngay để trải nghiệm dịch vụ của chúng tôi!</p>
+            <a href="/Menu" class="btn btn-primary mt-2">Xem thực đơn</a>
+        </div>
+    }
+</div>
+
+@functions {
+    private string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Chờ xác nhận" => "bg-warning text-dark",
+            "Đã xác nhận" => "bg-info text-white",
+            "Đang giao" => "bg-primary text-white",
+            "Đã giao" => "bg-success text-white",
+            "Đã huỷ" => "bg-danger text-white",
+            _ => "bg-secondary text-white"
+        };
+    }
+} 
