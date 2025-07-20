@@ -1,0 +1,52 @@
+@page
+@model NhaHang.Pages.Admin.Bank.IndexModel
+@{
+    ViewData["Title"] = "Quản lý tài khoản ngân hàng";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fa-solid fa-building-columns me-2"></i>Quản lý tài khoản ngân hàng</h4>
+                </div>
+                <div class="card-body">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["Success"]</div>
+                    }
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["Error"]</div>
+                    }
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Chủ tài khoản</label>
+                            <input asp-for="ThongTin.ChuTaiKhoan" class="form-control" required />
+                            <span asp-validation-for="ThongTin.ChuTaiKhoan" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Số tài khoản</label>
+                            <input asp-for="ThongTin.SoTaiKhoan" class="form-control" required />
+                            <span asp-validation-for="ThongTin.SoTaiKhoan" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ngân hàng</label>
+                            <input asp-for="ThongTin.NganHang" class="form-control" required />
+                            <span asp-validation-for="ThongTin.NganHang" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ApiKey (nếu có)</label>
+                            <input asp-for="ThongTin.ApiKey" class="form-control" />
+                            <span asp-validation-for="ThongTin.ApiKey" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100"><i class="fa fa-save me-2"></i>Lưu thông tin</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} 

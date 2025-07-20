@@ -33,6 +33,34 @@ namespace NhaHang.Pages.Orders
         public async Task OnGetAsync()
         {
             var allOrders = await _shopService.GetAllOrdersAsync();
+            foreach (var order in allOrders)
+            {
+                if (order.PhuongThucThanhToan == "Chuyển khoản")
+                {
+                    if (order.TrangThai == "Đã thanh toán")
+                    {
+                        // Nếu đã thanh toán chuyển khoản thì tự động xác nhận đơn hàng
+                        if (order.TrangThai != "Đã xác nhận")
+                        {
+                            order.TrangThai = "Đã xác nhận";
+                            await _shopService.UpdateOrderAsync(order);
+                        }
+                    }
+                    else if (order.TrangThai == "Chờ xác nhận")
+                    {
+                        order.TrangThai = "Chờ thanh toán - Chờ xác nhận";
+                        await _shopService.UpdateOrderAsync(order);
+                    }
+                }
+                else if (order.PhuongThucThanhToan == "Tiền mặt")
+                {
+                    if (order.TrangThai == "Chờ xác nhận")
+                    {
+                        order.TrangThai = "Đã xác nhận";
+                        await _shopService.UpdateOrderAsync(order);
+                    }
+                }
+            }
             if (!string.IsNullOrEmpty(Status))
                 allOrders = allOrders.Where(o => o.TrangThai == Status).ToList();
             if (!string.IsNullOrEmpty(Search))

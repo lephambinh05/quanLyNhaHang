@@ -33,7 +33,31 @@ namespace NhaHang.Pages.Orders
                 TempData["Error"] = "Không tìm thấy đơn hàng";
                 return RedirectToPage("Index");
             }
-            
+            // Đồng bộ trạng thái như ở trang danh sách
+            if (Order.PhuongThucThanhToan == "Chuyển khoản")
+            {
+                if (Order.TrangThai == "Đã thanh toán")
+                {
+                    if (Order.TrangThai != "Đã xác nhận")
+                    {
+                        Order.TrangThai = "Đã xác nhận";
+                        await _shopService.UpdateOrderAsync(Order);
+                    }
+                }
+                else if (Order.TrangThai == "Chờ xác nhận")
+                {
+                    Order.TrangThai = "Chờ thanh toán - Chờ xác nhận";
+                    await _shopService.UpdateOrderAsync(Order);
+                }
+            }
+            else if (Order.PhuongThucThanhToan == "Tiền mặt")
+            {
+                if (Order.TrangThai == "Chờ xác nhận")
+                {
+                    Order.TrangThai = "Đã xác nhận";
+                    await _shopService.UpdateOrderAsync(Order);
+                }
+            }
             return Page();
         }
     }

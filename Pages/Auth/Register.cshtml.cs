@@ -24,11 +24,13 @@ namespace NhaHang.Pages.Auth
         [BindProperty]
         public string DiaChi { get; set; } = string.Empty;
         public bool Success { get; set; } = false;
+        public string ErrorMessage { get; set; } = string.Empty;
+        
         public async Task<IActionResult> OnPostAsync()
         {
             if (string.IsNullOrEmpty(HoTen) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(MatKhau))
             {
-                ModelState.AddModelError(string.Empty, "Vui lòng nhập đầy đủ thông tin.");
+                ErrorMessage = "Vui lòng nhập đầy đủ thông tin.";
                 return Page();
             }
             var kh = new KhachHang

@@ -14,21 +14,46 @@ else
     {
         <div class="alert alert-danger">@TempData["ErrorDetails"]</div>
     }
-    @if (Model.Order != null)
-    {
-        <div class="alert alert-info">
-            MaDonHang: @Model.Order.MaDonHang <br />
-            TrangThai: @Model.Order.TrangThai <br />
-            MaChiNhanh: @Model.Order.MaChiNhanh <br />
-            SoDienThoai: @Model.Order.SoDienThoai <br />
-            TenKhachHang: @Model.Order.TenKhachHang <br />
-            DiaChiGiaoHang: @Model.Order.DiaChiGiaoHang <br />
-        </div>
-    }
+
     <div class="col-lg-8 mx-auto">
         <div class="card shadow-sm border-0 mt-4">
             <div class="card-header bg-white fw-bold">Cập nhật trạng thái đơn hàng</div>
             <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Trạng thái thanh toán</label><br />
+                    @if (Model.Order.PhuongThucThanhToan == "Chuyển khoản")
+                    {
+                        if (Model.Order.TrangThai == "Đã xác nhận" || Model.Order.TrangThai == "Đã thanh toán")
+                        {
+                            <span class="badge bg-success">Đã thanh toán</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Chờ thanh toán</span>
+                        }
+                    }
+                    else if (Model.Order.PhuongThucThanhToan == "Tiền mặt")
+                    {
+                        <span class="badge bg-info text-dark">Tiền mặt</span>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Trạng thái đơn hàng</label><br />
+                    @{
+                        var badgeClassOrder = Model.Order.TrangThai switch
+                        {
+                            "Chờ xác nhận" => "bg-warning text-dark",
+                            "Chờ thanh toán - Chờ xác nhận" => "bg-warning text-dark",
+                            "Đã xác nhận" => "bg-info",
+                            "Đang chế biến" => "bg-primary",
+                            "Đang giao" => "bg-primary",
+                            "Hoàn thành" => "bg-success",
+                            "Hủy" => "bg-danger",
+                            _ => "bg-secondary"
+                        };
+                    }
+                    <span class="badge @badgeClassOrder">@Model.Order.TrangThai</span>
+                </div>
                 <form method="post">
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -67,13 +92,14 @@ else
                     {
                         <div class="mb-3">
                             <label class="form-label fw-bold">Tổng tiền</label>
-                            <input type="text" class="form-control" value="@Model.Order.ChiTietDonHangs.Sum(ct => ct.SoLuong * ct.DonGia).ToString("N0") + " ₫" readonly />
+                            <input type="text" class="form-control" value="@Model.Order.ChiTietDonHangs.Sum(ct => ct.SoLuong * ct.DonGia).ToString("N0") ₫" readonly />
                         </div>
                     }
                     <div class="mb-3">
                         <label asp-for="Order.TrangThai" class="form-label">Trạng thái đơn hàng *</label>
                         <select asp-for="Order.TrangThai" class="form-select" required>
                             <option value="Chờ xác nhận">Chờ xác nhận</option>
+                            <option value="Đã xác nhận">Đã xác nhận</option>
                             <option value="Đang chế biến">Đang chế biến</option>
                             <option value="Đang giao">Đang giao</option>
                             <option value="Hoàn thành">Hoàn thành</option>

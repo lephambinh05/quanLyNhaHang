@@ -52,7 +52,8 @@
                         <th>Số điện thoại</th>
                         <th>Chi nhánh</th>
                         <th>Ngày đặt</th>
-                        <th>Trạng thái</th>
+                        <th>Trạng thái thanh toán</th>
+                        <th>Trạng thái đơn hàng</th>
                         <th>Tổng tiền</th>
                         <th></th>
                     </tr>
@@ -75,11 +76,30 @@
                                 <td>@(order.ChiNhanh?.TenChiNhanh ?? "N/A")</td>
                                 <td>@order.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</td>
                                 <td>
+                                    @if (order.PhuongThucThanhToan == "Chuyển khoản")
+                                    {
+                                        if (order.TrangThai == "Đã xác nhận" || order.TrangThai == "Đã thanh toán")
+                                        {
+                                            <span class="badge bg-success">Đã thanh toán</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning text-dark">Chờ thanh toán</span>
+                                        }
+                                    }
+                                    else if (order.PhuongThucThanhToan == "Tiền mặt")
+                                    {
+                                        <span class="badge bg-info text-dark">Tiền mặt</span>
+                                    }
+                                </td>
+                                <td>
                                     @{
                                         var badgeClass = order.TrangThai switch
                                         {
                                             "Chờ xác nhận" => "bg-warning text-dark",
-                                            "Đang chế biến" => "bg-info",
+                                            "Chờ thanh toán - Chờ xác nhận" => "bg-warning text-dark",
+                                            "Đã xác nhận" => "bg-info",
+                                            "Đang chế biến" => "bg-primary",
                                             "Đang giao" => "bg-primary",
                                             "Hoàn thành" => "bg-success",
                                             "Hủy" => "bg-danger",

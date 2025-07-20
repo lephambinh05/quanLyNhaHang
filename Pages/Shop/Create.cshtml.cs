@@ -198,12 +198,23 @@ namespace NhaHang.Pages.Shop
             if (User.Identity.IsAuthenticated)
             {
                 var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                donHang.MaKhachHang = customerId;
+                var khachHang = await _shopService.GetKhachHangByIdAsync(customerId);
+                if (khachHang != null)
+                {
+                    donHang.MaKhachHang = customerId;
+                }
+                // Nếu không tồn tại, không gán MaKhachHang (để null)
             }
             var result = await _shopService.CreateOrderAsync(donHang, cartItems);
             if (result)
             {
                 HttpContext.Session.Remove("Cart");
+                if (Order.PhuongThucThanhToan == "ChuyenKhoan")
+                {
+                    // Lấy mã đơn hàng vừa tạo
+                    var maDonHang = donHang.MaDonHang;
+                    return RedirectToPage("/Shop/ThanhToanChuyenKhoan", new { id = maDonHang });
+                }
                 TempData["Success"] = "Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.";
                 // Nạp lại dữ liệu để hiển thị form rỗng và thông báo thành công
                 AvailableDishes = await _menuService.GetAllAsync();

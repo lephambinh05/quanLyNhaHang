@@ -1,13 +1,3 @@
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.csproj.AssemblyReference.cache
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.AssemblyInfoInputs.cache
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.AssemblyInfo.cs
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.csproj.CoreCompileInputs.cache
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.RazorAssemblyInfo.cache
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.RazorAssemblyInfo.cs
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.sourcelink.json
 C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\appsettings.json
 C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\nhaHang.staticwebassets.runtime.json
@@ -156,6 +146,16 @@ C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\runtimes\win\lib\net6.0\S
 C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\lephambinh\Downloads\nhaHang\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.csproj.AssemblyReference.cache
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.AssemblyInfoInputs.cache
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.AssemblyInfo.cs
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.csproj.CoreCompileInputs.cache
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.RazorAssemblyInfo.cache
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.RazorAssemblyInfo.cs
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.sourcelink.json
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\scopedcss\bundle\nhaHang.styles.css
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\scopedcss\projectbundle\nhaHang.bundle.scp.css
@@ -221,6 +221,8 @@ C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\a3ygkwa5zy-2z0
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\nezrqnk58p-muycvpuwrr.gz
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\3f7cnb0vc6-yfezkfs63w.gz
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\ivplfd0css-c8imhdtz18.gz
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\0d6vwgeu3g-61n19gt1b8.gz
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\6afmt7m0q2-xtxxf3hu2r.gz
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\04ubxp6he2-bqjiyaj88i.gz
@@ -299,4 +301,4 @@ C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\refint\nhaHang.dll
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.pdb
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\nhaHang.genruntimeconfig.cache
 C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\ref\nhaHang.dll
-C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\ivplfd0css-c8imhdtz18.gz
+C:\Users\lephambinh\Downloads\nhaHang\obj\Debug\net9.0\compressed\9skgzifnvp-jt3obplio1.gz

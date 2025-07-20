@@ -7,6 +7,9 @@ using System.Linq;
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace NhaHang.Services
 {
@@ -104,6 +107,61 @@ namespace NhaHang.Services
             if (order == null) return false;
             _context.DonHangs.Remove(order);
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<KhachHang?> GetKhachHangByIdAsync(string? maKhachHang)
+        {
+            if (string.IsNullOrEmpty(maKhachHang)) return null;
+            return await _context.KhachHangs.FindAsync(maKhachHang);
+        }
+
+        public async Task<bool> CheckAndMarkPaymentAsync(string maDonHang)
+        {
+            // Lấy thông tin đơn hàng
+            var donHang = await _context.DonHangs.FindAsync(maDonHang);
+            if (donHang == null) return false;
+            // Lấy api key từ ThongTinThanhToan
+            var bankInfo = _context.ThongTinThanhToans.FirstOrDefault();
+            if (bankInfo == null || string.IsNullOrWhiteSpace(bankInfo.ApiKey)) return false;
+            string apiKey = bankInfo.ApiKey;
+            string apiUrl = $"https://api.sieuthicode.net/historyapiacbv2/{apiKey}";
+            using var http = new HttpClient();
+            try
+            {
+                var response = await http.GetAsync(apiUrl);
+                if (!response.IsSuccessStatusCode) return false;
+                var json = await response.Content.ReadAsStringAsync();
+                // Parse JSON lấy biến root
+                using var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                // API thực tế trả về object có trường 'transactions' là mảng
+                JsonElement transactionsArr;
+                if (root.TryGetProperty("transactions", out transactionsArr) && transactionsArr.ValueKind == JsonValueKind.Array)
+                {
+                    foreach (var item in transactionsArr.EnumerateArray())
+                    {
+                        if (item.TryGetProperty("description", out var noiDung) &&
+                            item.TryGetProperty("type", out var type) &&
+                            type.GetString()?.ToUpper() == "IN")
+                        {
+                            var desc = noiDung.GetString() ?? string.Empty;
+                            if (desc.ToLower().Contains(maDonHang.ToLower()))
+                            {
+                                // Đánh dấu đã thanh toán
+                                donHang.TrangThai = "Đã thanh toán";
+                                await _context.SaveChangesAsync();
+                                return true;
+                            }
+                        }
+                    }
+                }
+                // Nếu không tìm thấy giao dịch phù hợp
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private async Task<string> GenerateOrderIdAsync()

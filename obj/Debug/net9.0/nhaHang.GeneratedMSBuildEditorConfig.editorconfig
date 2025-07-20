@@ -28,6 +28,12 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/lephambinh/Downloads/nhaHang/Pages/Admin/Bank/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQmFua1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4vQmFuay9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lephambinh/Downloads/nhaHang/Pages/Admin/Branches/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQnJhbmNoZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -180,6 +186,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/lephambinh/Downloads/nhaHang/Pages/Auth/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lephambinh/Downloads/nhaHang/Pages/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -230,6 +240,12 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/lephambinh/Downloads/nhaHang/Pages/Shop/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hvcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lephambinh/Downloads/nhaHang/Pages/Shop/ThanhToanChuyenKhoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hvcFxUaGFuaFRvYW5DaHV5ZW5LaG9hbi5jc2h0bWw=
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hvcC9UaGFuaFRvYW5DaHV5ZW5LaG9hbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lephambinh/Downloads/nhaHang/Pages/_ViewImports.cshtml]

@@ -3,36 +3,79 @@
 @{
     ViewData["Title"] = "Đăng ký tài khoản";
 }
-<div class="container py-4">
-    <h2 class="mb-4 text-center">Đăng ký tài khoản</h2>
-    @if (Model.Success)
-    {
-        <div class="alert alert-success">Đăng ký thành công! Bạn có thể <a href="/Auth/Login">đăng nhập</a> ngay.</div>
-    }
-    else
-    {
-        <form method="post">
-            <div class="mb-3">
-                <label class="form-label">Họ tên</label>
-                <input type="text" name="HoTen" class="form-control" value="@Model.HoTen" required />
+
+<link rel="stylesheet" href="~/css/auth.css" />
+
+<div class="auth-container">
+    <div class="auth-left">
+        <div class="auth-left-content">
+            <h1 class="auth-left-title">NhaHangChain</h1>
+            <p class="auth-left-subtitle">Tham gia cùng chúng tôi để trải nghiệm ẩm thực tuyệt vời</p>
+        </div>
+    </div>
+    
+    <div class="auth-right">
+        <div class="auth-form-container">
+            <div class="auth-form-header">
+                <h1 class="auth-form-title">Đăng ký</h1>
+                <p class="auth-form-subtitle">Nhập thông tin để tạo tài khoản mới</p>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" name="Email" class="form-control" value="@Model.Email" required />
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Mật khẩu</label>
-                <input type="password" name="MatKhau" class="form-control" required />
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Số điện thoại</label>
-                <input type="text" name="SoDienThoai" class="form-control" value="@Model.SoDienThoai" required />
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Địa chỉ</label>
-                <input type="text" name="DiaChi" class="form-control" value="@Model.DiaChi" required />
-            </div>
-            <button type="submit" class="btn btn-danger">Đăng ký</button>
-        </form>
-    }
+            
+            @if (Model.Success)
+            {
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    Đăng ký thành công! Bạn có thể <a href="/Auth/Login" class="text-decoration-none">đăng nhập</a> ngay.
+                </div>
+            }
+            else
+            {
+                <form method="post">
+                    <div class="form-group">
+                        <input type="text" name="HoTen" class="form-control" placeholder="Họ tên" value="@Model.HoTen" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="Email" class="form-control" placeholder="Email" value="@Model.Email" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" name="MatKhau" class="form-control" placeholder="Mật khẩu" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="SoDienThoai" class="form-control" placeholder="Số điện thoại" value="@Model.SoDienThoai" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="DiaChi" class="form-control" placeholder="Địa chỉ" value="@Model.DiaChi" required />
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                        <label class="form-check-label" for="agreeTerms">
+                            Tôi đồng ý với <strong>Điều khoản sử dụng</strong> và <strong>Chính sách bảo mật</strong>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-auth">
+                        <i class="fas fa-user-plus me-2"></i>
+                        Đăng ký
+                    </button>
+                </form>
+                
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        @Model.ErrorMessage
+                    </div>
+                }
+                
+                <div class="auth-links">
+                    <a href="/Auth/Login">Đã có tài khoản? Đăng nhập ngay</a>
+                </div>
+            }
+        </div>
+    </div>
 </div> 

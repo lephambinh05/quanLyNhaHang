@@ -27,13 +27,33 @@ else
                     <dd class="col-sm-8">@(Model.Order.ChiNhanh?.TenChiNhanh ?? "N/A")</dd>
                     <dt class="col-sm-4">Ngày đặt</dt>
                     <dd class="col-sm-8">@Model.Order.NgayDatHang.ToString("dd/MM/yyyy HH:mm")</dd>
-                    <dt class="col-sm-4">Trạng thái</dt>
+                    <dt class="col-sm-4">Trạng thái thanh toán</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Order.PhuongThucThanhToan == "Chuyển khoản")
+                        {
+                            if (Model.Order.TrangThai == "Đã xác nhận" || Model.Order.TrangThai == "Đã thanh toán")
+                            {
+                                <span class="badge bg-success">Đã thanh toán</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Chờ thanh toán</span>
+                            }
+                        }
+                        else if (Model.Order.PhuongThucThanhToan == "Tiền mặt")
+                        {
+                            <span class="badge bg-info text-dark">Tiền mặt</span>
+                        }
+                    </dd>
+                    <dt class="col-sm-4">Trạng thái đơn hàng</dt>
                     <dd class="col-sm-8">
                         @{
                             var badgeClass = Model.Order.TrangThai switch
                             {
                                 "Chờ xác nhận" => "bg-warning text-dark",
-                                "Đang chế biến" => "bg-info",
+                                "Chờ thanh toán - Chờ xác nhận" => "bg-warning text-dark",
+                                "Đã xác nhận" => "bg-info",
+                                "Đang chế biến" => "bg-primary",
                                 "Đang giao" => "bg-primary",
                                 "Hoàn thành" => "bg-success",
                                 "Hủy" => "bg-danger",

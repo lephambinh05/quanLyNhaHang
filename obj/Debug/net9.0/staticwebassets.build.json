@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RNF9xnfzSSLGZOrG3ql4TQtRkdFHLbCwzaqMuXUe6kI=",
+  "Hash": "FcU68Irwze1UIVJdZnOzoxAfDnfnUfoTUct3Mld0AKU=",
   "Source": "nhaHang",
   "BasePath": "_content/nhaHang",
   "Mode": "Default",
@@ -1592,6 +1592,27 @@
       "OriginalItemSpec": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
+      "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\3f7cnb0vc6-yfezkfs63w.gz",
+      "SourceId": "nhaHang",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/nhaHang",
+      "RelativePath": "css/auth#[.{fingerprint=yfezkfs63w}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\auth.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "yi50t07b5p",
+      "Integrity": "+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\auth.css"
+    },
+    {
       "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\3tzsqhslk9-ub07r2b239.gz",
       "SourceId": "Microsoft.AspNetCore.Identity.UI",
       "SourceType": "Package",
@@ -1926,6 +1947,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\lephambinh\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\9.0.7\\staticwebassets\\V5\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\9skgzifnvp-jt3obplio1.gz",
+      "SourceId": "nhaHang",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/nhaHang",
+      "RelativePath": "css/admin#[.{fingerprint=jt3obplio1}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\admin.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "qakjl8jlam",
+      "Integrity": "fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\admin.css"
     },
     {
       "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\a3tl0zwb5t-ft3s53vfgj.gz",
@@ -4028,6 +4070,48 @@
       "OriginalItemSpec": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\nhaHang.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\admin.css",
+      "SourceId": "nhaHang",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\",
+      "BasePath": "_content/nhaHang",
+      "RelativePath": "css/admin#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jt3obplio1",
+      "Integrity": "qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin.css"
+    },
+    {
+      "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\auth.css",
+      "SourceId": "nhaHang",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\",
+      "BasePath": "_content/nhaHang",
+      "RelativePath": "css/auth#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yfezkfs63w",
+      "Integrity": "3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\auth.css"
+    },
+    {
       "Identity": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\site.css",
       "SourceId": "nhaHang",
       "SourceType": "Discovered",
@@ -5688,6 +5772,602 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/admin.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\9skgzifnvp-jt3obplio1.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000523286238"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:51:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\admin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9520"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:51:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin.css.gz",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\9skgzifnvp-jt3obplio1.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:51:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin.jt3obplio1.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\9skgzifnvp-jt3obplio1.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000523286238"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:51:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jt3obplio1"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin.jt3obplio1.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\admin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9520"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:51:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jt3obplio1"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qReCuwgoC6+pKadEJyiIebdx7zsZX0ysNOa1XstY8BM="
+        }
+      ]
+    },
+    {
+      "Route": "css/admin.jt3obplio1.css.gz",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\9skgzifnvp-jt3obplio1.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:51:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jt3obplio1"
+        },
+        {
+          "Name": "label",
+          "Value": "css/admin.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fk3n6rvWRmu70QUqYN7k5yonRioIzWafiEs3A7zm5pA="
+        }
+      ]
+    },
+    {
+      "Route": "css/auth.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\3f7cnb0vc6-yfezkfs63w.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000726744186"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1375"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:11:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI="
+        }
+      ]
+    },
+    {
+      "Route": "css/auth.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\auth.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5093"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:11:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI="
+        }
+      ]
+    },
+    {
+      "Route": "css/auth.css.gz",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\3f7cnb0vc6-yfezkfs63w.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1375"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:11:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM="
+        }
+      ]
+    },
+    {
+      "Route": "css/auth.yfezkfs63w.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\3f7cnb0vc6-yfezkfs63w.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000726744186"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1375"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:11:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yfezkfs63w"
+        },
+        {
+          "Name": "label",
+          "Value": "css/auth.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI="
+        }
+      ]
+    },
+    {
+      "Route": "css/auth.yfezkfs63w.css",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\auth.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5093"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:11:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yfezkfs63w"
+        },
+        {
+          "Name": "label",
+          "Value": "css/auth.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3qMHMBq4cVoq7G7qNNpEftM+TXoKkx8/kyVHL7u1CRI="
+        }
+      ]
+    },
+    {
+      "Route": "css/auth.yfezkfs63w.css.gz",
+      "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\3f7cnb0vc6-yfezkfs63w.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1375"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 20 Jul 2025 04:11:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yfezkfs63w"
+        },
+        {
+          "Name": "label",
+          "Value": "css/auth.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+ojGuCgCHRo2E3+REsJjEB0dmV6+i3L85BPP6BhjrvM="
+        }
+      ]
+    },
     {
       "Route": "css/site.c8imhdtz18.css",
       "AssetFile": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\obj\\Debug\\net9.0\\compressed\\ivplfd0css-c8imhdtz18.gz",
@@ -34114,7 +34794,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34167,7 +34847,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34204,7 +34884,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34251,7 +34931,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34312,7 +34992,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34357,7 +35037,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34412,7 +35092,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34473,7 +35153,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34518,7 +35198,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34573,7 +35253,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34626,7 +35306,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34663,7 +35343,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 04:28:37 GMT"
+          "Value": "Sun, 20 Jul 2025 04:42:23 GMT"
         },
         {
           "Name": "Cache-Control",

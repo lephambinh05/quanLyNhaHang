@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NhaHang.Pages.Admin
 {
@@ -21,18 +22,28 @@ namespace NhaHang.Pages.Admin
         [BindProperty]
         public InputModel Input { get; set; } = new();
         public string? ErrorMessage { get; set; }
+        public bool Success { get; set; }
 
         public class InputModel
         {
             [Required]
             [EmailAddress]
-            public string Email { get; set; }
+            public string Email { get; set; } = "";
             [Required]
             [DataType(DataType.Password)]
-            public string Password { get; set; }
+            public string Password { get; set; } = "";
         }
 
-        public void OnGet() { }
+        public async Task<IActionResult> OnGet()
+        {
+            var result = await HttpContext.AuthenticateAsync("AdminCookie");
+            if (result.Succeeded && result.Principal != null &&
+                (result.Principal.IsInRole("Admin") || result.Principal.IsInRole("SuperAdmin")))
+            {
+                return RedirectToPage("/Admin/Dashboard/Index");
+            }
+            return Page();
+        }
 
         public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {

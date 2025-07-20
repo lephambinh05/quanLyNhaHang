@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NhaHang.Data;
 using NhaHang.Services;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -102,5 +103,43 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
+
+app.MapGet("/api/cron/check-payments", async (ShopService shopService, ApplicationDbContext db) =>
+{
+    var donHangs = await shopService.GetAllOrdersAsync();
+    int checkedCount = 0, paidCount = 0;
+    List<object> allTransactions = new();
+    // Lấy api key từ ThongTinThanhToan
+    var bankInfo = db.ThongTinThanhToans.FirstOrDefault();
+    string apiKey = bankInfo?.ApiKey ?? string.Empty;
+    string apiUrl = $"https://api.sieuthicode.net/historyapiacbv2/{apiKey}";
+    using var http = new HttpClient();
+    string rawJson = null;
+    try
+    {
+        var response = await http.GetAsync(apiUrl);
+        if (response.IsSuccessStatusCode)
+        {
+            rawJson = await response.Content.ReadAsStringAsync();
+            using var doc = JsonDocument.Parse(rawJson);
+            var root = doc.RootElement;
+            if (root.TryGetProperty("transactions", out var arr) && arr.ValueKind == JsonValueKind.Array)
+            {
+                foreach (var item in arr.EnumerateArray())
+                {
+                    allTransactions.Add(JsonSerializer.Deserialize<object>(item.GetRawText()));
+                }
+            }
+        }
+    }
+    catch { }
+    foreach (var don in donHangs.Where(d => d.TrangThai != "Đã thanh toán" && d.PhuongThucThanhToan == "Chuyển khoản"))
+    {
+        var ok = await shopService.CheckAndMarkPaymentAsync(don.MaDonHang);
+        checkedCount++;
+        if (ok) paidCount++;
+    }
+    return Results.Ok(new { success = true, checkedOrders = checkedCount, paidOrders = paidCount });
+});
 
 app.Run();

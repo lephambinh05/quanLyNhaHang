@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\nhaHang.o4sl7k9n2u.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\auth.css",
+      "PackagePath": "staticwebassets\\css\\auth.css"
+    },
+    {
       "Id": "C:\\Users\\lephambinh\\Downloads\\nhaHang\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
